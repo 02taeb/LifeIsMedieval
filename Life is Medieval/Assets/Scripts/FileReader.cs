@@ -40,6 +40,13 @@ public class FileReader
         return strings;
     }
 
+    /// <summary>
+    /// Takes in a fileName and adds ".txt" then writes all lines from stringsToWrite to file (will create file if not found).
+    /// <br></br>
+    /// File will be saved in "...\LifeIsMedieval\Life is Medieval\fileName.txt"
+    /// </summary>
+    /// <param name="fileName">Name of file to write to or to create.</param>
+    /// <param name="stringsToWrite">List&lt;string&gt; to write to file</param>
     public void WriteToFile(string fileName, List<string> stringsToWrite)
     {
         fileName += ".txt";

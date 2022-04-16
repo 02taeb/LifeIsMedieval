@@ -1,10 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using UnityEngine;
 
-public class FileReader : MonoBehaviour
+public class FileReader
 {
     /// <summary>
     /// Takes a fileName and adds ".txt" then reads all lines from file.

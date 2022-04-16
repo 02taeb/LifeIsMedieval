@@ -13,6 +13,13 @@ public class Test : MonoBehaviour
     /// </summary>
     public void ForTesting()
     {
-        
+        GameController gameController = GameObject.Find("GameController").GetComponent<GameController>();
+        FileReader fr = new FileReader();
+
+        gameController.SetTest();
+        fr.WriteToFile("SaveGame", gameController.SaveTest());
+        gameController.ResetTest();
+        gameController.LoadTest(fr.ReadFromFile("SaveGame"));
+        gameController.DebugValues();
     }
 }

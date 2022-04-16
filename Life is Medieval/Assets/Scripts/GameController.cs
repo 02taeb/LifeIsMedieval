@@ -12,30 +12,38 @@ public class GameController : MonoBehaviour
     private double currentScene = 0;
     private List<double> madeDecisions = new List<double>();
 
-    public void DebugValues()
+    /// <summary>
+    /// Debug.Log stats, currentScene and madeDecisions.
+    /// </summary>
+    public void DebugLogValues()
     {
         Debug.Log(strength.ToString());
         Debug.Log(intellect.ToString());
         Debug.Log(trickery.ToString());
         Debug.Log(currentScene.ToString());
-        Debug.Log(madeDecisions.ToString());
+        foreach (double decision in madeDecisions)
+        {
+            Debug.Log(decision.ToString());
+        }
     }
 
-    public void SetTest()
-    {
-        SetStatsTest();
-        SetSceneTest();
-        MakeDecisionsTest();
-    }
-
-    public void ResetTest()
-    {
-        ResetSceneTest();
-        ZeroStatsTest();
-        ResetDecisionsTest();
-    }
-
-    public List<string> SaveTest()
+    /// <summary>
+    /// Saves stats, currentScene and madeDecisions.
+    /// </summary>
+    /// <returns>
+    /// List&lt;string&gt; with values.
+    /// <br></br>
+    /// Strength on line 0
+    /// <br></br>
+    /// Intellect on line 1
+    /// <br></br>
+    /// Trickery on line 2
+    /// <br></br>
+    /// CurrentScene on line 3
+    /// <br></br>
+    /// Rest of lines saves madeDecisions, one decision per line
+    /// </returns>
+    public List<string> SaveValues()
     {
         List<string> toSave = new List<string>();
         toSave.Add(strength.ToString());
@@ -50,7 +58,15 @@ public class GameController : MonoBehaviour
         return toSave;
     }
 
-    public void LoadTest(List<string> toLoad)
+    /// <summary>
+    /// Loads stats, currentScene and madeDecisions.
+    /// </summary>
+    /// <param name="toLoad">
+    /// List&lt;string&gt; with values.
+    /// <br></br>
+    /// Should only load from FileReader.ReadFromFile("SaveGame")
+    /// </param>
+    public void LoadValues(List<string> toLoad)
     {
         strength = int.Parse(toLoad.ElementAt(0));
         intellect = int.Parse(toLoad.ElementAt(1));
@@ -61,42 +77,5 @@ public class GameController : MonoBehaviour
         {
             madeDecisions.Add(double.Parse(toLoad.ElementAt(i)));
         }
-    }
-
-    private void MakeDecisionsTest()
-    {
-        madeDecisions.Add(0.2);
-        madeDecisions.Add(1.1);
-        madeDecisions.Add(2.0);
-        madeDecisions.Add(3.2);
-    }
-
-    private void ZeroStatsTest()
-    {
-        strength = 0;
-        intellect = 0;
-        trickery = 0;
-    }
-
-    private void SetStatsTest()
-    {
-        strength = 10;
-        intellect = 3;
-        trickery = 5;
-    }
-
-    private void ResetSceneTest()
-    {
-        currentScene = 0;
-    }
-
-    private void SetSceneTest()
-    {
-        currentScene = 4.5;
-    }
-
-    private void ResetDecisionsTest()
-    {
-        madeDecisions.Clear();
     }
 }

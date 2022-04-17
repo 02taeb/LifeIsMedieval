@@ -13,6 +13,9 @@ public class FileReader
     /// <returns>List&lt;string&gt; with lines read.</returns>
     public List<string> ReadFromFile(string fileName)
     {
+        string CurrentDirectory = Environment.CurrentDirectory;
+        Environment.CurrentDirectory = Environment.CurrentDirectory += "\\Assets\\Text Files";
+        
         fileName += ".txt";
         List<string> strings = new List<string>();
 
@@ -37,6 +40,7 @@ public class FileReader
             throw e;
         }
 
+        Environment.CurrentDirectory = CurrentDirectory;
         return strings;
     }
 
@@ -49,6 +53,9 @@ public class FileReader
     /// <param name="stringsToWrite">List&lt;string&gt; to write to file</param>
     public void WriteToFile(string fileName, List<string> stringsToWrite)
     {
+        string CurrentDirectory = Environment.CurrentDirectory;
+        Environment.CurrentDirectory = Environment.CurrentDirectory += "\\Assets\\Text Files";
+
         fileName += ".txt";
         using (StreamWriter sw = new StreamWriter(fileName))
         {
@@ -57,5 +64,7 @@ public class FileReader
                 sw.WriteLine(line);
             }
         }
+
+        Environment.CurrentDirectory = CurrentDirectory;
     }
 }

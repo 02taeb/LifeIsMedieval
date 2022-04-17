@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using UnityEngine;
 
 public class FileReader
 {
@@ -13,6 +14,18 @@ public class FileReader
     /// <returns>List&lt;string&gt; with lines read.</returns>
     public List<string> ReadFromFile(string fileName)
     {
+        string CurrentDirectory = Environment.CurrentDirectory;
+
+        // if case for working in editor, else for when built for Android
+        if (Environment.OSVersion.ToString() == "Microsoft Windows NT 10.0.22000.0")
+        {
+            Environment.CurrentDirectory = Environment.CurrentDirectory += "\\Assets\\Text Files";
+        }
+        else
+        {
+            Environment.CurrentDirectory = Application.persistentDataPath;
+        }
+        
         fileName += ".txt";
         List<string> strings = new List<string>();
 
@@ -37,6 +50,7 @@ public class FileReader
             throw e;
         }
 
+        Environment.CurrentDirectory = CurrentDirectory;
         return strings;
     }
 
@@ -49,6 +63,17 @@ public class FileReader
     /// <param name="stringsToWrite">List&lt;string&gt; to write to file</param>
     public void WriteToFile(string fileName, List<string> stringsToWrite)
     {
+        string CurrentDirectory = Environment.CurrentDirectory;
+        
+        if (Environment.OSVersion.ToString() == "Microsoft Windows NT 10.0.22000.0")
+        {
+            Environment.CurrentDirectory = Environment.CurrentDirectory += "\\Assets\\Text Files";
+        }
+        else
+        {
+            Environment.CurrentDirectory = Application.persistentDataPath;
+        }
+
         fileName += ".txt";
         using (StreamWriter sw = new StreamWriter(fileName))
         {
@@ -57,5 +82,7 @@ public class FileReader
                 sw.WriteLine(line);
             }
         }
+
+        Environment.CurrentDirectory = CurrentDirectory;
     }
 }

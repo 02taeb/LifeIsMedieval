@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -64,7 +65,14 @@ public class GameController : MonoBehaviour
     private void LoadGame()
     {
         FileReader fr = new FileReader();
-        LoadValues(fr.ReadFromFile("SaveGame"));
+        try
+        {
+            LoadValues(fr.ReadFromFile("SaveGame"));
+        }
+        catch (FileNotFoundException)
+        {
+            SaveGame();
+        }
     }
 
     /// <summary>

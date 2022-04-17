@@ -27,6 +27,46 @@ public class GameController : MonoBehaviour
         }
     }
 
+    private void OnApplicationQuit()
+    {
+        SaveGame();
+    }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        if (focus)
+        {
+            LoadGame();
+        }
+        else
+        {
+            SaveGame();
+        }
+    }
+
+    private void Awake()
+    {
+        LoadGame();
+    }
+
+    /// <summary>
+    /// Saves the current game state using FileReader.WriteToFile("SaveGame", this.SaveValues())
+    /// </summary>
+    public void SaveGame()
+    {
+        FileReader fr = new FileReader();
+        fr.WriteToFile("SaveGame", SaveValues());
+    }
+
+    /// <summary>
+    /// Loads most recent game state using this.LoadValues(FileReader.ReadFromFile("SaveGame"))
+    /// </summary>
+    private void LoadGame()
+    {
+        FileReader fr = new FileReader();
+        LoadValues(fr.ReadFromFile("SaveGame"));
+    }
+
     /// <summary>
     /// Saves stats, currentScene and madeDecisions.
     /// </summary>
@@ -43,7 +83,7 @@ public class GameController : MonoBehaviour
     /// <br></br>
     /// Rest of lines saves madeDecisions, one decision per line
     /// </returns>
-    public List<string> SaveValues()
+    private List<string> SaveValues()
     {
         List<string> toSave = new List<string>();
         toSave.Add(strength.ToString());
@@ -66,7 +106,7 @@ public class GameController : MonoBehaviour
     /// <br></br>
     /// Should only load from FileReader.ReadFromFile("SaveGame")
     /// </param>
-    public void LoadValues(List<string> toLoad)
+    private void LoadValues(List<string> toLoad)
     {
         strength = int.Parse(toLoad.ElementAt(0));
         intellect = int.Parse(toLoad.ElementAt(1));

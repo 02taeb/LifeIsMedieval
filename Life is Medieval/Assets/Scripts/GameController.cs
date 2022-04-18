@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public float volume = 1.0f;
+    private static float staticVolume;
     private int strength = 0;
     private int intellect = 0;
     private int trickery = 0;
@@ -26,6 +28,16 @@ public class GameController : MonoBehaviour
         {
             Debug.Log(decision.ToString());
         }
+    }
+
+    private void Start()
+    {
+        volume = staticVolume;
+    }
+
+    private void Update()
+    {
+        SetVolume();
     }
 
     private void OnApplicationQuit()
@@ -57,6 +69,23 @@ public class GameController : MonoBehaviour
     {
         FileReader fr = new FileReader();
         fr.WriteToFile("SaveGame", SaveValues());
+    }
+
+    /// <summary>
+    /// Sets global volume settings
+    /// </summary>
+    private void SetVolume()
+    {
+        staticVolume = volume;
+        if (staticVolume < 0)
+        {
+            staticVolume = 0.0f;
+        }
+        else if (staticVolume > 1)
+        {
+            staticVolume = 1.0f;
+        }
+        AudioListener.volume = staticVolume;
     }
 
     /// <summary>

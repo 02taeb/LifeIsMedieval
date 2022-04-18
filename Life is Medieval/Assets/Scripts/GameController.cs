@@ -32,6 +32,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        staticVolume = PlayerPrefs.GetFloat("Volume");
         volume = staticVolume;
     }
 
@@ -86,6 +87,7 @@ public class GameController : MonoBehaviour
             staticVolume = 1.0f;
         }
         AudioListener.volume = staticVolume;
+        PlayerPrefs.SetFloat("Volume", staticVolume);
     }
 
     /// <summary>

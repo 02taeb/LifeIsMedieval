@@ -57,7 +57,7 @@ public class FileReader
     /// <summary>
     /// Takes in a fileName and adds ".txt" then writes all lines from stringsToWrite to file (will create file if not found).
     /// <br></br>
-    /// File will be saved in "...\LifeIsMedieval\Life is Medieval\fileName.txt"
+    /// File will be saved in Application.persistentDataPath or "Assets/Text Files/"
     /// </summary>
     /// <param name="fileName">Name of file to write to or to create.</param>
     /// <param name="stringsToWrite">List&lt;string&gt; to write to file</param>

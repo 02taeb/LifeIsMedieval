@@ -20,7 +20,6 @@ public class SceneController : MonoBehaviour
 
     public void LoadScene(string sceneFileName)
     {
-        Debug.Log("Running");
         currentScene = ((GameObject)Resources.Load("StoryScenes/" + sceneFileName)).GetComponent<Scene>();
 
         List<string> strings = fr.ReadFromFile(sceneFileName);
@@ -32,7 +31,6 @@ public class SceneController : MonoBehaviour
 
         ToggleObjects();
         SetObjectValues(strings);
-        Debug.Log("Finished");
     }
 
     public void LoadNextScene()

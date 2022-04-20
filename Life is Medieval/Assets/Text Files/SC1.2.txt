@@ -1,0 +1,10 @@
+false
+false
+true
+false
+false
+true
+true
+true
+false
+This is some story

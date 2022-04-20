@@ -30,6 +30,17 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void CreateFiles()
+    {
+        FileReader fr = new FileReader();
+        // Create files for Application.persistentDataPath.
+        // All files in Assets/Text Files (except SaveGame) should be created.
+
+        // fr.WriteToFile("SC1.1", strings);
+        // fr.WriteToFile("TSC1.1", strings); 
+        // ...
+    }
+
     private void Start()
     {
         staticVolume = PlayerPrefs.GetFloat("Volume");

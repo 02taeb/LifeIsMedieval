@@ -18,7 +18,11 @@ public class SceneController : MonoBehaviour
         LoadScene("SC1.1");
     }
 
-    public void LoadScene(string sceneFileName)
+    /// <summary>
+    /// Loads a scene.
+    /// </summary>
+    /// <param name="sceneFileName">Scene Name on file</param>
+    private void LoadScene(string sceneFileName)
     {
         currentScene = ((GameObject)Resources.Load("StoryScenes/" + sceneFileName)).GetComponent<Scene>();
 
@@ -33,6 +37,9 @@ public class SceneController : MonoBehaviour
         SetObjectValues(strings);
     }
 
+    /// <summary>
+    /// Loads the scene after this one.
+    /// </summary>
     public void LoadNextScene()
     {
         if (currentScene.nextScene != null)
@@ -42,6 +49,9 @@ public class SceneController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Loads the scene before this one.
+    /// </summary>
     public void LoadPrevScene()
     {
         if (currentScene.prevScene != null)
@@ -51,6 +61,9 @@ public class SceneController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Toggles all relevant GameObjects in scene according to sceneconfig.
+    /// </summary>
     private void ToggleObjects()
     {
         if (!currentScene.sc.lBtns)
@@ -111,11 +124,19 @@ public class SceneController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sets values on relevant GameObjects in scene.
+    /// </summary>
+    /// <param name="strings">List&lt;string&gt; with values.</param>
     private void SetObjectValues(List<string> strings)
     {
         if (currentScene.sc.lText)
         {
-            lText.text = strings[9];
+            lText.text = "";
+            foreach (string str in fr.ReadFromFile("T" + currentScene.sceneName))
+            {
+                lText.text += str + "\n";
+            }
         }
         else if (currentScene.sc.lGraphic)
         {
@@ -123,7 +144,11 @@ public class SceneController : MonoBehaviour
         }
         if (currentScene.sc.rText)
         {
-            rText.text = strings[9];
+            rText.text = "";
+            foreach (string str in fr.ReadFromFile("T" + currentScene.sceneName))
+            {
+                rText.text += str + "\n";
+            }
         }
         else if (currentScene.sc.rGraphic)
         {
@@ -133,8 +158,14 @@ public class SceneController : MonoBehaviour
         {
             fGraphic.sprite = currentScene.sprite;
         }
+
+        // TODO: Add values for buttons
     }
 
+    /// <summary>
+    /// Parses values from List&lt;string&gt; and enters them into currentScene.SceneConfiguration.
+    /// </summary>
+    /// <param name="strings">List&lt;string&gt; with values</param>
     private void ParseBools(List<string> strings)
     {
         currentScene.sc.lBtns = bool.Parse(strings[0]);
@@ -148,6 +179,9 @@ public class SceneController : MonoBehaviour
         currentScene.sc.fGraphic = bool.Parse(strings[8]);
     }
 
+    /// <summary>
+    /// Choice data container for button.
+    /// </summary>
     public class Choice
     {
         private string btnText = "";
@@ -155,6 +189,12 @@ public class SceneController : MonoBehaviour
         private Req req = Req.NONE;
         private int reqNum;
 
+        /// <summary>
+        /// Checks that a Choice is correctly set up.
+        /// <br></br>
+        /// Choice is correctly set up if btnText and flavourText have assigned values and an optional requirement is set with necessary reqValue.
+        /// </summary>
+        /// <returns>true if correct, else false</returns>
         public bool CheckValidity()
         {
             return string.IsNullOrEmpty(btnText) && 
@@ -162,6 +202,9 @@ public class SceneController : MonoBehaviour
                     (req == Req.NONE ? reqNum == 0 : reqNum > 0);
         }
 
+        /// <summary>
+        /// Possible requirements for making a choice.
+        /// </summary>
         enum Req { STRENGTH, INTELLIGENCE, TRICKERY, NONE }
     }
 }

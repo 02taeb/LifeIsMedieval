@@ -19,7 +19,7 @@ public class FileReader
         // if case for working in editor, else for when built for Android
         if (Environment.OSVersion.ToString() == "Microsoft Windows NT 10.0.22000.0")
         {
-            Environment.CurrentDirectory = Environment.CurrentDirectory += "\\Assets\\Text Files";
+            Environment.CurrentDirectory += "\\Assets\\Text Files";
         }
         else
         {

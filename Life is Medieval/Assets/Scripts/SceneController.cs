@@ -141,6 +141,7 @@ public class SceneController : MonoBehaviour
         else if (currentScene.sc.lGraphic)
         {
             lGraphic.sprite = currentScene.sprite;
+            lGraphic.gameObject.GetComponent<Image>().color = Color.white;
         }
         if (currentScene.sc.rText)
         {
@@ -153,10 +154,12 @@ public class SceneController : MonoBehaviour
         else if (currentScene.sc.rGraphic)
         {
             rGraphic.sprite = currentScene.sprite;
+            rGraphic.gameObject.GetComponent<Image>().color = Color.white;
         }
         if (currentScene.sc.fGraphic)
         {
             fGraphic.sprite = currentScene.sprite;
+            fGraphic.gameObject.GetComponent<Image>().color = Color.white;
         }
 
         // TODO: Add values for buttons

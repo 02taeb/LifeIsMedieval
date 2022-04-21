@@ -46,12 +46,6 @@ public class GameController : MonoBehaviour
         // ...
     }
 
-    private void Start()
-    {
-        staticVolume = PlayerPrefs.GetFloat("Volume");
-        volume = staticVolume;
-    }
-
     private void Update()
     {
         SetVolume();
@@ -79,6 +73,8 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         LoadGame();
+        staticVolume = PlayerPrefs.GetFloat("Volume");
+        volume = staticVolume;
     }
 
     /// <summary>

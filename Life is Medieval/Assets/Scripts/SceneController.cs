@@ -20,6 +20,16 @@ public class SceneController : MonoBehaviour
 
     private void Update()
     {
+        if (currentScene.prevScene == null)
+            GameObject.Find("BtnPrevStory").GetComponent<Button>().interactable = false;
+        else
+            GameObject.Find("BtnPrevStory").GetComponent<Button>().interactable = true;
+
+        if (currentScene.nextScene == null)
+            GameObject.Find("BtnNextStory").GetComponent<Button>().interactable = false;
+        else
+            GameObject.Find("BtnNextStory").GetComponent<Button>().interactable = true;
+
         if (!currentScene.sc.lBtns && !currentScene.sc.rBtns)
             currentScene.completed = true;
         if (gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "1")
@@ -41,14 +51,14 @@ public class SceneController : MonoBehaviour
         }
     }
 
-    private void Awake()
+    private void Start()
     {
-        LoadScene("SC1.1");
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
         for (int i = 0; i < 6; i++)
         {
             choices[i] = new Choice();
         }
+        LoadScene(gameController.currentScene);
     }
 
     /// <summary>

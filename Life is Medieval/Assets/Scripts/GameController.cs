@@ -4,6 +4,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class GameController : MonoBehaviour
     public int intellect = 0;
     [NonSerialized]
     public int trickery = 0;
-    private double currentScene = 0;
+    public string currentScene = "SC1.1";
     [NonSerialized]
     public List<string> madeDecisions = new List<string>();
 
@@ -54,6 +55,8 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         SetVolume();
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+            currentScene = GameObject.Find("SceneController").GetComponent<SceneController>().currentScene.sceneName;
     }
 
     private void OnApplicationQuit()
@@ -165,7 +168,7 @@ public class GameController : MonoBehaviour
         strength = int.Parse(toLoad.ElementAt(0));
         intellect = int.Parse(toLoad.ElementAt(1));
         trickery = int.Parse(toLoad.ElementAt(2));
-        currentScene = double.Parse(toLoad.ElementAt(3));
+        currentScene = toLoad.ElementAt(3);
         
         for (int i = 4; i < toLoad.Count; i++)
         {

@@ -35,15 +35,30 @@ public class GameController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Creates necessary files on startup.
+    /// </summary>
     public void CreateFiles()
     {
-        FileReader fr = new FileReader();
         // Create files for Application.persistentDataPath.
         // All files in Assets/Text Files (except SaveGame) should be created.
+        // Can't find a better solution than this which is essentially hard coding everything.
+        // Luckily the story files, which will probably contain the most text, doesn't need to be one word per string.
+            // As long as it fits inside the textboxes.
 
-        // fr.WriteToFile("SC1.1", strings);
-        // fr.WriteToFile("TSC1.1", strings); 
-        // ...
+        FileReader fr = new FileReader();
+        List<string> fileContent = new List<string>();
+
+        #region Example
+        fileContent.Clear();
+        // Add all strings which should be in file
+        fileContent.Add("Some");
+        fileContent.Add("Text");
+
+        // Write file with strings
+        fr.WriteToFile("Example", fileContent);
+        #endregion
+        // Repeat for all SC, TSC, TTSC and BSC files.
     }
 
     private void Update()

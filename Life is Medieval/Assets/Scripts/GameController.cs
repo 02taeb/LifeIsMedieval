@@ -38,27 +38,54 @@ public class GameController : MonoBehaviour
     /// <summary>
     /// Creates necessary files on startup.
     /// </summary>
-    public void CreateFiles()
+    private void CreateFiles()
     {
-        // Create files for Application.persistentDataPath.
-        // All files in Assets/Text Files (except SaveGame) should be created.
-        // Can't find a better solution than this which is essentially hard coding everything.
-        // Luckily the story files, which will probably contain the most text, doesn't need to be one word per string.
-            // As long as it fits inside the textboxes.
-
         FileReader fr = new FileReader();
-        List<string> fileContent = new List<string>();
+        List<string> files = new List<string>();
+        string currentDirectory = Environment.CurrentDirectory;
 
-        #region Example
-        fileContent.Clear();
-        // Add all strings which should be in file
-        fileContent.Add("Some");
-        fileContent.Add("Text");
+        files.Add("BSC1.4");
+        files.Add("SC1.1");
+        files.Add("SC1.2");
+        files.Add("SC1.3");
+        files.Add("SC1.4");
+        files.Add("SC2.1");
+        files.Add("TSC1.1");
+        files.Add("TSC1.2");
+        files.Add("TSC1.3");
+        files.Add("TSC1.4");
+        files.Add("TSC2.1");
+        files.Add("TTSC2.1");
 
-        // Write file with strings
-        fr.WriteToFile("Example", fileContent);
-        #endregion
-        // Repeat for all SC, TSC, TTSC and BSC files.
+        Environment.CurrentDirectory = currentDirectory;
+
+        foreach (string file in files)
+        {
+            Environment.CurrentDirectory = currentDirectory;
+            fr.WriteToFile(file, TextAssetToList((TextAsset)Resources.Load("TextsToCreate/" + file)));
+            Environment.CurrentDirectory = currentDirectory;
+        }
+
+        Environment.CurrentDirectory = currentDirectory;
+    }
+
+    /// <summary>
+    /// Converts all lines of text in a textasset to a List&lt;string&gt;
+    /// </summary>
+    /// <param name="textAsset"></param>
+    /// <returns></returns>
+    private List<string> TextAssetToList(TextAsset textAsset)
+    {
+        List<string> text = new List<string>();
+        using (StringReader sr = new StringReader(textAsset.text))
+        {
+            string line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                text.Add(line);
+            }
+        }
+        return text;
     }
 
     private void Update()
@@ -87,6 +114,7 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
+        CreateFiles();
         LoadGame();
         staticVolume = PlayerPrefs.GetFloat("Volume");
         volume = staticVolume;
@@ -125,12 +153,14 @@ public class GameController : MonoBehaviour
     public void LoadGame()
     {
         FileReader fr = new FileReader();
+        string currentDirectory = Environment.CurrentDirectory;
         try
         {
             LoadValues(fr.ReadFromFile("SaveGame"));
         }
         catch (FileNotFoundException)
         {
+            Environment.CurrentDirectory = currentDirectory;
             SaveGame();
         }
     }

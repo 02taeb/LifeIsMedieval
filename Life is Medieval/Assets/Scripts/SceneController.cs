@@ -117,6 +117,7 @@ public class SceneController : MonoBehaviour
         {
             lbPanel.SetActive(true);
         }
+
         if (!currentScene.sc.rBtns)
         {
             rbPanel.SetActive(false);
@@ -125,6 +126,7 @@ public class SceneController : MonoBehaviour
         {
             rbPanel.SetActive(true);
         }
+
         if (!currentScene.sc.lText)
         {
             lText.gameObject.SetActive(false);
@@ -133,6 +135,7 @@ public class SceneController : MonoBehaviour
         {
             lText.gameObject.SetActive(true);
         }
+
         if (!currentScene.sc.rText)
         {
             rText.gameObject.SetActive(false);
@@ -141,6 +144,7 @@ public class SceneController : MonoBehaviour
         {
             rText.gameObject.SetActive(true);
         }
+
         if (!currentScene.sc.lGraphic)
         {
             lGraphic.gameObject.SetActive(false);
@@ -149,6 +153,7 @@ public class SceneController : MonoBehaviour
         {
             lGraphic.gameObject.SetActive(true);
         }
+
         if (!currentScene.sc.rGraphic)
         {
             rGraphic.gameObject.SetActive(false);
@@ -157,6 +162,7 @@ public class SceneController : MonoBehaviour
         {
             rGraphic.gameObject.SetActive(true);
         }
+
         if (!currentScene.sc.fGraphic)
         {
             fGraphic.gameObject.SetActive(false);
@@ -173,7 +179,7 @@ public class SceneController : MonoBehaviour
     /// <param name="strings">List&lt;string&gt; with values.</param>
     private void SetObjectValues(List<string> strings)
     {
-        if (currentScene.sc.lText)
+        if (currentScene.sc.lText && !currentScene.sc.rText)
         {
             lText.text = "";
             foreach (string str in fr.ReadFromFile("T" + currentScene.sceneName))
@@ -202,7 +208,7 @@ public class SceneController : MonoBehaviour
             }
         }
 
-        if (currentScene.sc.rText)
+        if (currentScene.sc.rText && !currentScene.sc.lText)
         {
             rText.text = "";
             foreach (string str in fr.ReadFromFile("T" + currentScene.sceneName))
@@ -235,6 +241,21 @@ public class SceneController : MonoBehaviour
         {
             fGraphic.sprite = currentScene.sprite;
             fGraphic.gameObject.GetComponent<Image>().color = Color.white;
+        }
+        
+        if (currentScene.sc.lText && currentScene.sc.rText)
+        {
+            lText.text = "";
+            foreach (string str in fr.ReadFromFile("T" + currentScene.sceneName))
+            {
+                lText.text += str + "\n";
+            }
+
+            rText.text = "";
+            foreach (string str in fr.ReadFromFile("TT" + currentScene.sceneName))
+            {
+                rText.text += str + "\n";
+            }
         }
     }
 

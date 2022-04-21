@@ -7,4 +7,3 @@ false
 true
 true
 false
-This is some story

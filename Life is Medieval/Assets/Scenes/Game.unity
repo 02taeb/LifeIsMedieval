@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 308639750}
   - component: {fileID: 308639749}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Button 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -458,7 +458,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 308639750}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 126003979}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: MakeDecision
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &308639750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2571,7 +2583,7 @@ GameObject:
   - component: {fileID: 1679073648}
   - component: {fileID: 1679073647}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Button 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2640,7 +2652,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1679073648}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 126003979}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: MakeDecision
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1679073648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2771,7 +2795,7 @@ GameObject:
   - component: {fileID: 1733806161}
   - component: {fileID: 1733806160}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2840,7 +2864,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1733806161}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 126003979}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: MakeDecision
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1733806161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2892,7 +2928,7 @@ GameObject:
   - component: {fileID: 1738839957}
   - component: {fileID: 1738839956}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2961,7 +2997,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1738839957}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 126003979}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: MakeDecision
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1738839957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3092,7 +3140,7 @@ GameObject:
   - component: {fileID: 1932497466}
   - component: {fileID: 1932497465}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Button 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3161,7 +3209,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1932497466}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 126003979}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: MakeDecision
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1932497466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3213,7 +3273,7 @@ GameObject:
   - component: {fileID: 1939918677}
   - component: {fileID: 1939918676}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Button 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3282,7 +3342,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1939918677}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 126003979}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: MakeDecision
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1939918677
 MonoBehaviour:
   m_ObjectHideFlags: 0

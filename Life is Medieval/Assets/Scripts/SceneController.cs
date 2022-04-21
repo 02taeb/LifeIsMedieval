@@ -20,18 +20,24 @@ public class SceneController : MonoBehaviour
 
     private void Update()
     {
-        if(!currentScene.sc.lBtns && !currentScene.sc.rBtns)
-        {
+        if (!currentScene.sc.lBtns && !currentScene.sc.rBtns)
             currentScene.completed = true;
-        }
+        /*if (gameController.madeDecisions.Contains(double.Parse(currentScene.sceneName.Substring(2) + "1"))
+            || gameController.madeDecisions.Contains(double.Parse(currentScene.sceneName.Substring(2) + "2"))
+            || gameController.madeDecisions.Contains(double.Parse(currentScene.sceneName.Substring(2) + "3")))
+            currentScene.completed = true;*/
 
         if (!currentScene.completed)
-        {
             GameObject.Find("BtnNextStory").GetComponent<Button>().interactable = false;
-        }
         else
-        {
             GameObject.Find("BtnNextStory").GetComponent<Button>().interactable = true;
+
+        if (currentScene.completed)
+        {
+            foreach (Button btn in buttons)
+            {
+                //btn.interactable = false;
+            }
         }
     }
 
@@ -260,6 +266,11 @@ public class SceneController : MonoBehaviour
 
             j++;
         }
+    }
+
+    public void MakeDecision()
+    {
+        gameController.madeDecisions.Add(double.Parse(currentScene.sceneName.Substring(2) + gameObject.name.Substring(gameObject.name.IndexOf('n') + 1)));
     }
 
     /// <summary>

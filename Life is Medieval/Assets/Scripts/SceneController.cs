@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,14 +10,55 @@ public class SceneController : MonoBehaviour
     public GameObject lPanel, rPanel, lbPanel, rbPanel;
     public Image fGraphic, lGraphic, rGraphic;
     public Text lText, rText;
-    public GameObject[] buttons;
-    public Choice[] choices = new Choice[3];
-    private Scene currentScene;
+    public Button[] buttons;
+    public Text[] btnTexts;
+    public Text[] btnFlavTexts;
+    public Choice[] choices = new Choice[6];
+    public Scene currentScene;
     private FileReader fr = new FileReader();
+    private GameController gameController;
 
-    private void Awake()
+    private void Update()
     {
-        LoadScene("SC1.1");
+        if (currentScene.prevScene == null)
+            GameObject.Find("BtnPrevStory").GetComponent<Button>().interactable = false;
+        else
+            GameObject.Find("BtnPrevStory").GetComponent<Button>().interactable = true;
+
+        if (currentScene.nextScene == null)
+            GameObject.Find("BtnNextStory").GetComponent<Button>().interactable = false;
+        else
+            GameObject.Find("BtnNextStory").GetComponent<Button>().interactable = true;
+
+        if (!currentScene.sc.lBtns && !currentScene.sc.rBtns)
+            currentScene.completed = true;
+        if (gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "1")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "2")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "3"))
+            currentScene.completed = true;
+
+        if (!currentScene.completed)
+            GameObject.Find("BtnNextStory").GetComponent<Button>().interactable = false;
+        else
+            GameObject.Find("BtnNextStory").GetComponent<Button>().interactable = true;
+
+        if (currentScene.completed)
+        {
+            foreach (Button btn in buttons)
+            {
+                btn.interactable = false;
+            }
+        }
+    }
+
+    private void Start()
+    {
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
+        for (int i = 0; i < 6; i++)
+        {
+            choices[i] = new Choice();
+        }
+        LoadScene(gameController.currentScene);
     }
 
     /// <summary>
@@ -143,6 +186,22 @@ public class SceneController : MonoBehaviour
             lGraphic.sprite = currentScene.sprite;
             lGraphic.gameObject.GetComponent<Image>().color = Color.white;
         }
+        else if (currentScene.sc.lBtns)
+        {
+            try
+            {
+                LSetChoices();
+
+                SetButton(0);
+                SetButton(1);
+                SetButton(2);
+            }
+            catch (FileNotFoundException)
+            {
+                Debug.Log("B" + currentScene.sceneName + " not found!");
+            }
+        }
+
         if (currentScene.sc.rText)
         {
             rText.text = "";
@@ -156,13 +215,105 @@ public class SceneController : MonoBehaviour
             rGraphic.sprite = currentScene.sprite;
             rGraphic.gameObject.GetComponent<Image>().color = Color.white;
         }
+        else if (currentScene.sc.rBtns)
+        {
+            try
+            {
+                RSetChoices();
+
+                SetButton(3);
+                SetButton(4);
+                SetButton(5);
+            }
+            catch (FileNotFoundException)
+            {
+                Debug.Log("B" + currentScene.sceneName + " not found!");
+            }
+        }
+
         if (currentScene.sc.fGraphic)
         {
             fGraphic.sprite = currentScene.sprite;
             fGraphic.gameObject.GetComponent<Image>().color = Color.white;
         }
+    }
 
-        // TODO: Add values for buttons
+    /// <summary>
+    /// Sets the values of choices for leftButtons.
+    /// </summary>
+    private void LSetChoices()
+    {
+        List<string> btnStrings = new List<string>(fr.ReadFromFile("B" + currentScene.sceneName));
+
+        for (int i = 0; i < 3; i++)
+        {
+            choices[i].btnText = btnStrings[i * 4];
+            choices[i].flavourText = btnStrings[i * 4 + 1];
+            choices[i].req = (Choice.Req)Enum.Parse(typeof(Choice.Req), btnStrings[i * 4 + 2]);
+            choices[i].reqNum = int.Parse(btnStrings[i * 4 + 3]);
+
+            if (!choices[i].CheckValidity())
+                Debug.Log(i + "Button set up incorrectly");
+        }
+    }
+
+    /// <summary>
+    /// Sets the values of choices for rightButtons.
+    /// </summary>
+    private void RSetChoices()
+    {
+        List<string> btnStrings = new List<string>(fr.ReadFromFile("B" + currentScene.sceneName));
+        int j = 0;
+        for (int i = 3; i < 6; i++)
+        {
+            choices[i].btnText = btnStrings[j * 4];
+            choices[i].flavourText = btnStrings[j * 4 + 1];
+            choices[i].req = (Choice.Req)Enum.Parse(typeof(Choice.Req), btnStrings[j * 4 + 2]);
+            choices[i].reqNum = int.Parse(btnStrings[j * 4 + 3]);
+
+            if (!choices[i].CheckValidity())
+                Debug.Log(i + "Button set up incorrectly");
+
+            j++;
+        }
+    }
+
+    /// <summary>
+    /// Sets up a button according to corresponding choices[]
+    /// </summary>
+    /// <param name="buttonIndex">index of button and choice</param>
+    private void SetButton(int buttonIndex)
+    {
+        btnTexts[buttonIndex].text = choices[buttonIndex].btnText;
+        btnFlavTexts[buttonIndex].text = choices[buttonIndex].flavourText;
+        buttons[buttonIndex].interactable = true;
+
+        switch (choices[buttonIndex].req)
+        {
+            case Choice.Req.STRENGTH:
+                if (choices[buttonIndex].reqNum > gameController.strength)
+                {
+                    buttons[buttonIndex].interactable = false;
+                }
+                break;
+
+            case Choice.Req.INTELLIGENCE:
+                if (choices[buttonIndex].reqNum > gameController.intellect)
+                {
+                    buttons[buttonIndex].interactable = false;
+                }
+                break;
+
+            case Choice.Req.TRICKERY:
+                if (choices[buttonIndex].reqNum > gameController.trickery)
+                {
+                    buttons[buttonIndex].interactable = false;
+                }
+                break;
+
+            case Choice.Req.NONE:
+                break;
+        }
     }
 
     /// <summary>
@@ -187,10 +338,10 @@ public class SceneController : MonoBehaviour
     /// </summary>
     public class Choice
     {
-        private string btnText = "";
-        private string flavourText = "";
-        private Req req = Req.NONE;
-        private int reqNum;
+        public string btnText = "";
+        public string flavourText = "";
+        public Req req = Req.NONE;
+        public int reqNum;
 
         /// <summary>
         /// Checks that a Choice is correctly set up.
@@ -200,14 +351,14 @@ public class SceneController : MonoBehaviour
         /// <returns>true if correct, else false</returns>
         public bool CheckValidity()
         {
-            return string.IsNullOrEmpty(btnText) && 
-                    string.IsNullOrEmpty(flavourText) && 
+            return !string.IsNullOrEmpty(btnText) && 
+                    !string.IsNullOrEmpty(flavourText) && 
                     (req == Req.NONE ? reqNum == 0 : reqNum > 0);
         }
 
         /// <summary>
         /// Possible requirements for making a choice.
         /// </summary>
-        enum Req { STRENGTH, INTELLIGENCE, TRICKERY, NONE }
+        public enum Req { STRENGTH, INTELLIGENCE, TRICKERY, NONE }
     }
 }

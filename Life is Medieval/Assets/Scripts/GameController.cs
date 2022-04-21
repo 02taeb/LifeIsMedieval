@@ -4,16 +4,21 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
     public float volume = 1.0f;
     private static float staticVolume;
-    private int strength = 0;
-    private int intellect = 0;
-    private int trickery = 0;
-    private double currentScene = 0;
-    private List<double> madeDecisions = new List<double>();
+    [NonSerialized]
+    public int strength = 0;
+    [NonSerialized]
+    public int intellect = 0;
+    [NonSerialized]
+    public int trickery = 0;
+    public string currentScene = "SC1.1";
+    [NonSerialized]
+    public List<string> madeDecisions = new List<string>();
 
     /// <summary>
     /// Debug.Log stats, currentScene and madeDecisions.
@@ -24,9 +29,9 @@ public class GameController : MonoBehaviour
         Debug.Log(intellect.ToString());
         Debug.Log(trickery.ToString());
         Debug.Log(currentScene.ToString());
-        foreach (double decision in madeDecisions)
+        foreach (string decision in madeDecisions)
         {
-            Debug.Log(decision.ToString());
+            Debug.Log(decision);
         }
     }
 
@@ -41,15 +46,11 @@ public class GameController : MonoBehaviour
         // ...
     }
 
-    private void Start()
-    {
-        staticVolume = PlayerPrefs.GetFloat("Volume");
-        volume = staticVolume;
-    }
-
     private void Update()
     {
         SetVolume();
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+            currentScene = GameObject.Find("SceneController").GetComponent<SceneController>().currentScene.sceneName;
     }
 
     private void OnApplicationQuit()
@@ -72,6 +73,8 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         LoadGame();
+        staticVolume = PlayerPrefs.GetFloat("Volume");
+        volume = staticVolume;
     }
 
     /// <summary>
@@ -140,9 +143,9 @@ public class GameController : MonoBehaviour
         toSave.Add(intellect.ToString());
         toSave.Add(trickery.ToString());
         toSave.Add(currentScene.ToString());
-        foreach (double decision in madeDecisions)
+        foreach (string decision in madeDecisions)
         {
-            toSave.Add(decision.ToString());
+            toSave.Add(decision);
         }
 
         return toSave;
@@ -161,11 +164,12 @@ public class GameController : MonoBehaviour
         strength = int.Parse(toLoad.ElementAt(0));
         intellect = int.Parse(toLoad.ElementAt(1));
         trickery = int.Parse(toLoad.ElementAt(2));
-        currentScene = double.Parse(toLoad.ElementAt(3));
+        currentScene = toLoad.ElementAt(3);
         
         for (int i = 4; i < toLoad.Count; i++)
         {
-            madeDecisions.Add(double.Parse(toLoad.ElementAt(i)));
+            if (!madeDecisions.Contains(toLoad.ElementAt(i)))
+                madeDecisions.Add(toLoad.ElementAt(i));
         }
     }
 }

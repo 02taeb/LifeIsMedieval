@@ -47,3 +47,4 @@ MonoBehaviour:
   prevScene: {fileID: 7873533839791708879, guid: e0f2387dd0ed98f4cb7ec2096f9eefbd, type: 3}
   nextScene: {fileID: 7873533839791708879, guid: 4ad7c56be6ce4144aa4abce034710384, type: 3}
   sceneName: SC1.2
+  completed: 1

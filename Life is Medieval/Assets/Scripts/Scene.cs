@@ -6,6 +6,7 @@ public class Scene : MonoBehaviour
     public Scene prevScene, nextScene;
     public string sceneName;
     public SceneConfiguration sc = new SceneConfiguration();
+    public bool completed;
 
     public class SceneConfiguration
     {

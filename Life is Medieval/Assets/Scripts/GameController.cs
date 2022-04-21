@@ -9,11 +9,15 @@ public class GameController : MonoBehaviour
 {
     public float volume = 1.0f;
     private static float staticVolume;
-    private int strength = 0;
-    private int intellect = 0;
-    private int trickery = 0;
+    [NonSerialized]
+    public int strength = 0;
+    [NonSerialized]
+    public int intellect = 0;
+    [NonSerialized]
+    public int trickery = 0;
     private double currentScene = 0;
-    private List<double> madeDecisions = new List<double>();
+    [NonSerialized]
+    public List<double> madeDecisions = new List<double>();
 
     /// <summary>
     /// Debug.Log stats, currentScene and madeDecisions.

@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
     public int trickery = 0;
     private double currentScene = 0;
     [NonSerialized]
-    public List<double> madeDecisions = new List<double>();
+    public List<string> madeDecisions = new List<string>();
 
     /// <summary>
     /// Debug.Log stats, currentScene and madeDecisions.
@@ -28,9 +28,9 @@ public class GameController : MonoBehaviour
         Debug.Log(intellect.ToString());
         Debug.Log(trickery.ToString());
         Debug.Log(currentScene.ToString());
-        foreach (double decision in madeDecisions)
+        foreach (string decision in madeDecisions)
         {
-            Debug.Log(decision.ToString());
+            Debug.Log(decision);
         }
     }
 
@@ -144,9 +144,9 @@ public class GameController : MonoBehaviour
         toSave.Add(intellect.ToString());
         toSave.Add(trickery.ToString());
         toSave.Add(currentScene.ToString());
-        foreach (double decision in madeDecisions)
+        foreach (string decision in madeDecisions)
         {
-            toSave.Add(decision.ToString());
+            toSave.Add(decision);
         }
 
         return toSave;
@@ -169,7 +169,8 @@ public class GameController : MonoBehaviour
         
         for (int i = 4; i < toLoad.Count; i++)
         {
-            madeDecisions.Add(double.Parse(toLoad.ElementAt(i)));
+            if (!madeDecisions.Contains(toLoad.ElementAt(i)))
+                madeDecisions.Add(toLoad.ElementAt(i));
         }
     }
 }

@@ -283,6 +283,7 @@ MonoBehaviour:
   - {fileID: 1462739644}
   - {fileID: 2095750683}
   - {fileID: 896174762}
+  currentScene: {fileID: 0}
 --- !u!4 &126003980
 Transform:
   m_ObjectHideFlags: 0
@@ -388,6 +389,7 @@ GameObject:
   - component: {fileID: 308639751}
   - component: {fileID: 308639750}
   - component: {fileID: 308639749}
+  - component: {fileID: 308639752}
   m_Layer: 5
   m_Name: Button 3
   m_TagString: Untagged
@@ -459,9 +461,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 126003979}
-        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: MakeDecision
+      - m_Target: {fileID: 308639752}
+        m_TargetAssemblyTypeName: MakeDecision, Assembly-CSharp
+        m_MethodName: MakeDecisionOnButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -509,6 +511,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308639747}
   m_CullTransparentMesh: 1
+--- !u!114 &308639752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308639747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0614182b13c2c7c4abec2cbdc7c3261c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &384396818
 GameObject:
   m_ObjectHideFlags: 0
@@ -2582,6 +2596,7 @@ GameObject:
   - component: {fileID: 1679073649}
   - component: {fileID: 1679073648}
   - component: {fileID: 1679073647}
+  - component: {fileID: 1679073650}
   m_Layer: 5
   m_Name: Button 2
   m_TagString: Untagged
@@ -2653,9 +2668,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 126003979}
-        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: MakeDecision
+      - m_Target: {fileID: 1679073650}
+        m_TargetAssemblyTypeName: MakeDecision, Assembly-CSharp
+        m_MethodName: MakeDecisionOnButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2703,6 +2718,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1679073645}
   m_CullTransparentMesh: 1
+--- !u!114 &1679073650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679073645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0614182b13c2c7c4abec2cbdc7c3261c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1682605990
 GameObject:
   m_ObjectHideFlags: 0
@@ -2794,6 +2821,7 @@ GameObject:
   - component: {fileID: 1733806162}
   - component: {fileID: 1733806161}
   - component: {fileID: 1733806160}
+  - component: {fileID: 1733806163}
   m_Layer: 5
   m_Name: Button 1
   m_TagString: Untagged
@@ -2865,9 +2893,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 126003979}
-        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: MakeDecision
+      - m_Target: {fileID: 1733806163}
+        m_TargetAssemblyTypeName: MakeDecision, Assembly-CSharp
+        m_MethodName: MakeDecisionOnButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2915,6 +2943,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733806158}
   m_CullTransparentMesh: 1
+--- !u!114 &1733806163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733806158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0614182b13c2c7c4abec2cbdc7c3261c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1738839954
 GameObject:
   m_ObjectHideFlags: 0
@@ -2927,6 +2967,7 @@ GameObject:
   - component: {fileID: 1738839958}
   - component: {fileID: 1738839957}
   - component: {fileID: 1738839956}
+  - component: {fileID: 1738839959}
   m_Layer: 5
   m_Name: Button 1
   m_TagString: Untagged
@@ -2998,9 +3039,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 126003979}
-        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: MakeDecision
+      - m_Target: {fileID: 1738839959}
+        m_TargetAssemblyTypeName: MakeDecision, Assembly-CSharp
+        m_MethodName: MakeDecisionOnButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3048,6 +3089,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738839954}
   m_CullTransparentMesh: 1
+--- !u!114 &1738839959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738839954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0614182b13c2c7c4abec2cbdc7c3261c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1789125636
 GameObject:
   m_ObjectHideFlags: 0
@@ -3139,6 +3192,7 @@ GameObject:
   - component: {fileID: 1932497467}
   - component: {fileID: 1932497466}
   - component: {fileID: 1932497465}
+  - component: {fileID: 1932497468}
   m_Layer: 5
   m_Name: Button 3
   m_TagString: Untagged
@@ -3210,9 +3264,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 126003979}
-        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: MakeDecision
+      - m_Target: {fileID: 1932497468}
+        m_TargetAssemblyTypeName: MakeDecision, Assembly-CSharp
+        m_MethodName: MakeDecisionOnButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3260,6 +3314,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1932497463}
   m_CullTransparentMesh: 1
+--- !u!114 &1932497468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932497463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0614182b13c2c7c4abec2cbdc7c3261c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1939918674
 GameObject:
   m_ObjectHideFlags: 0
@@ -3272,6 +3338,7 @@ GameObject:
   - component: {fileID: 1939918678}
   - component: {fileID: 1939918677}
   - component: {fileID: 1939918676}
+  - component: {fileID: 1939918679}
   m_Layer: 5
   m_Name: Button 2
   m_TagString: Untagged
@@ -3343,9 +3410,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 126003979}
-        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: MakeDecision
+      - m_Target: {fileID: 1939918679}
+        m_TargetAssemblyTypeName: MakeDecision, Assembly-CSharp
+        m_MethodName: MakeDecisionOnButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3393,6 +3460,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1939918674}
   m_CullTransparentMesh: 1
+--- !u!114 &1939918679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939918674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0614182b13c2c7c4abec2cbdc7c3261c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1970413624
 GameObject:
   m_ObjectHideFlags: 0

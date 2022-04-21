@@ -14,7 +14,7 @@ public class SceneController : MonoBehaviour
     public Text[] btnTexts;
     public Text[] btnFlavTexts;
     public Choice[] choices = new Choice[6];
-    private Scene currentScene;
+    public Scene currentScene;
     private FileReader fr = new FileReader();
     private GameController gameController;
 
@@ -22,10 +22,10 @@ public class SceneController : MonoBehaviour
     {
         if (!currentScene.sc.lBtns && !currentScene.sc.rBtns)
             currentScene.completed = true;
-        /*if (gameController.madeDecisions.Contains(double.Parse(currentScene.sceneName.Substring(2) + "1"))
-            || gameController.madeDecisions.Contains(double.Parse(currentScene.sceneName.Substring(2) + "2"))
-            || gameController.madeDecisions.Contains(double.Parse(currentScene.sceneName.Substring(2) + "3")))
-            currentScene.completed = true;*/
+        if (gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "1")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "2")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "3"))
+            currentScene.completed = true;
 
         if (!currentScene.completed)
             GameObject.Find("BtnNextStory").GetComponent<Button>().interactable = false;
@@ -36,7 +36,7 @@ public class SceneController : MonoBehaviour
         {
             foreach (Button btn in buttons)
             {
-                //btn.interactable = false;
+                btn.interactable = false;
             }
         }
     }
@@ -268,11 +268,6 @@ public class SceneController : MonoBehaviour
         }
     }
 
-    public void MakeDecision()
-    {
-        gameController.madeDecisions.Add(double.Parse(currentScene.sceneName.Substring(2) + gameObject.name.Substring(gameObject.name.IndexOf('n') + 1)));
-    }
-
     /// <summary>
     /// Sets up a button according to corresponding choices[]
     /// </summary>
@@ -281,6 +276,7 @@ public class SceneController : MonoBehaviour
     {
         btnTexts[buttonIndex].text = choices[buttonIndex].btnText;
         btnFlavTexts[buttonIndex].text = choices[buttonIndex].flavourText;
+        buttons[buttonIndex].interactable = true;
 
         switch (choices[buttonIndex].req)
         {

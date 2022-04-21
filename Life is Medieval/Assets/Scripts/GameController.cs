@@ -104,7 +104,7 @@ public class GameController : MonoBehaviour
     /// <summary>
     /// Loads most recent game state using this.LoadValues(FileReader.ReadFromFile("SaveGame"))
     /// </summary>
-    private void LoadGame()
+    public void LoadGame()
     {
         FileReader fr = new FileReader();
         try

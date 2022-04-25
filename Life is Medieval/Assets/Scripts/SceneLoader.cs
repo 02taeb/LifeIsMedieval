@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+
     //Ladda scener med 
     public void loadScene ()
     {
@@ -14,6 +15,9 @@ public class SceneLoader : MonoBehaviour
             GameObject.Find("GameController").GetComponent<GameController>().SaveGame();
         }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex == 0 ? 1 : 0);
+
+
+
     }
     private void Start()
     {

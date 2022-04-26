@@ -5,9 +5,7 @@ using UnityEngine.SceneManagement;
 
 
 public class SceneLoader : MonoBehaviour
-{
-
-    //Ladda scener med 
+{ 
     public void loadScene ()
     {
         if (SceneManager.GetActiveScene().buildIndex == 1)

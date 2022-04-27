@@ -34,19 +34,19 @@ public class SceneController : MonoBehaviour
 
         if (!currentScene.sc.lBtns && !currentScene.sc.rBtns)
             currentScene.completed = true;
-        if (gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "1S")
+        if (gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "0S")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "1S")
             || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "2S")
             || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "3S")
             || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "4S")
-            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "5S")
-            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "6S"))
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "5S"))
             currentScene.completed = true;
-        if (gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "1F")
+        if (gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "0F")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "1F")
             || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "2F")
             || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "3F")
             || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "4F")
-            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "5F")
-            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "6F"))
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "5F"))
             currentScene.completed = true;
 
         if (!currentScene.completed)

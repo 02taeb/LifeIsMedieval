@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public float volume = 1.0f;
-    private static float staticVolume;
+    private static float staticVolume = 1.0f;
     [NonSerialized]
     public int strength = 0;
     [NonSerialized]
@@ -114,6 +114,7 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
+        // PlayerPrefs.SetFloat("Volume", 1.0f);
         CreateFiles();
         LoadGame();
         staticVolume = PlayerPrefs.GetFloat("Volume");

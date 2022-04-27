@@ -30,11 +30,23 @@ public class SceneController : MonoBehaviour
         else
             GameObject.Find("BtnNextStory").GetComponent<Button>().interactable = true;
 
+        currentScene.completed = false;
+
         if (!currentScene.sc.lBtns && !currentScene.sc.rBtns)
             currentScene.completed = true;
-        if (gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "1")
-            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "2")
-            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "3"))
+        if (gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "0S")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "1S")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "2S")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "3S")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "4S")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "5S"))
+            currentScene.completed = true;
+        if (gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "0F")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "1F")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "2F")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "3F")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "4F")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "5F"))
             currentScene.completed = true;
 
         if (!currentScene.completed)
@@ -243,7 +255,7 @@ public class SceneController : MonoBehaviour
             fGraphic.gameObject.GetComponent<Image>().color = Color.white;
         }
         
-        if (currentScene.sc.lText && currentScene.sc.rText)
+        if (currentScene.sc.lText && currentScene.sc.rText && currentScene.nextScene != null)
         {
             lText.text = "";
             foreach (string str in fr.ReadFromFile("T" + currentScene.sceneName))
@@ -255,6 +267,29 @@ public class SceneController : MonoBehaviour
             foreach (string str in fr.ReadFromFile("TT" + currentScene.sceneName))
             {
                 rText.text += str + "\n";
+            }
+        }
+        else if (currentScene.sc.lText && currentScene.sc.rText)
+        {
+            List<string> lEndings = fr.ReadFromFile("T" + currentScene.sceneName + "E");
+            List<string> rEndings = fr.ReadFromFile("TT" + currentScene.sceneName + "E");
+            int max = Mathf.Max(gameController.strength, gameController.intelligence, gameController.trickery);
+            lText.text = "";
+            rText.text = "";
+            if (gameController.strength == max)
+            {
+                lText.text = lEndings[0];
+                rText.text = rEndings[0];
+            }
+            else if (gameController.intelligence == max)
+            {
+                lText.text = lEndings[1];
+                rText.text = rEndings[1];
+            }
+            else
+            {
+                lText.text = lEndings[2];
+                rText.text = rEndings[2];
             }
         }
     }
@@ -308,33 +343,6 @@ public class SceneController : MonoBehaviour
         btnTexts[buttonIndex].text = choices[buttonIndex].btnText;
         btnFlavTexts[buttonIndex].text = choices[buttonIndex].flavourText;
         buttons[buttonIndex].interactable = true;
-
-        switch (choices[buttonIndex].req)
-        {
-            case Choice.Req.STRENGTH:
-                if (choices[buttonIndex].reqNum > gameController.strength)
-                {
-                    buttons[buttonIndex].interactable = false;
-                }
-                break;
-
-            case Choice.Req.INTELLIGENCE:
-                if (choices[buttonIndex].reqNum > gameController.intellect)
-                {
-                    buttons[buttonIndex].interactable = false;
-                }
-                break;
-
-            case Choice.Req.TRICKERY:
-                if (choices[buttonIndex].reqNum > gameController.trickery)
-                {
-                    buttons[buttonIndex].interactable = false;
-                }
-                break;
-
-            case Choice.Req.NONE:
-                break;
-        }
     }
 
     /// <summary>
@@ -355,31 +363,11 @@ public class SceneController : MonoBehaviour
     }
 
     /// <summary>
-    /// Choice data container for button.
+    /// Gets clone of local Choice[].
     /// </summary>
-    public class Choice
+    /// <returns>choices.Clone();</returns>
+    public Choice[] GetChoices()
     {
-        public string btnText = "";
-        public string flavourText = "";
-        public Req req = Req.NONE;
-        public int reqNum;
-
-        /// <summary>
-        /// Checks that a Choice is correctly set up.
-        /// <br></br>
-        /// Choice is correctly set up if btnText and flavourText have assigned values and an optional requirement is set with necessary reqValue.
-        /// </summary>
-        /// <returns>true if correct, else false</returns>
-        public bool CheckValidity()
-        {
-            return !string.IsNullOrEmpty(btnText) && 
-                    !string.IsNullOrEmpty(flavourText) && 
-                    (req == Req.NONE ? reqNum == 0 : reqNum > 0);
-        }
-
-        /// <summary>
-        /// Possible requirements for making a choice.
-        /// </summary>
-        public enum Req { STRENGTH, INTELLIGENCE, TRICKERY, NONE }
+        return (Choice[])choices.Clone();
     }
 }

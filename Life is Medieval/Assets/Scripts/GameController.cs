@@ -9,11 +9,11 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public float volume = 1.0f;
-    private static float staticVolume;
+    private static float staticVolume = 1.0f;
     [NonSerialized]
     public int strength = 0;
     [NonSerialized]
-    public int intellect = 0;
+    public int intelligence = 0;
     [NonSerialized]
     public int trickery = 0;
     public string currentScene = "SC1.1";
@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
     public void DebugLogValues()
     {
         Debug.Log(strength.ToString());
-        Debug.Log(intellect.ToString());
+        Debug.Log(intelligence.ToString());
         Debug.Log(trickery.ToString());
         Debug.Log(currentScene.ToString());
         foreach (string decision in madeDecisions)
@@ -50,12 +50,15 @@ public class GameController : MonoBehaviour
         files.Add("SC1.3");
         files.Add("SC1.4");
         files.Add("SC2.1");
+        files.Add("SC3.1");
         files.Add("TSC1.1");
         files.Add("TSC1.2");
         files.Add("TSC1.3");
         files.Add("TSC1.4");
         files.Add("TSC2.1");
+        files.Add("TSC3.1E");
         files.Add("TTSC2.1");
+        files.Add("TTSC3.1E");
 
         Environment.CurrentDirectory = currentDirectory;
 
@@ -114,6 +117,8 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
+        // https://discord.com/channels/961255353008406598/964194314873884672/968813090592419870 
+        // PlayerPrefs.SetFloat("Volume", 1.0f);
         CreateFiles();
         LoadGame();
         staticVolume = PlayerPrefs.GetFloat("Volume");
@@ -185,7 +190,7 @@ public class GameController : MonoBehaviour
     {
         List<string> toSave = new List<string>();
         toSave.Add(strength.ToString());
-        toSave.Add(intellect.ToString());
+        toSave.Add(intelligence.ToString());
         toSave.Add(trickery.ToString());
         toSave.Add(currentScene.ToString());
         foreach (string decision in madeDecisions)
@@ -207,7 +212,7 @@ public class GameController : MonoBehaviour
     private void LoadValues(List<string> toLoad)
     {
         strength = int.Parse(toLoad.ElementAt(0));
-        intellect = int.Parse(toLoad.ElementAt(1));
+        intelligence = int.Parse(toLoad.ElementAt(1));
         trickery = int.Parse(toLoad.ElementAt(2));
         currentScene = toLoad.ElementAt(3);
         

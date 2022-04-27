@@ -14,6 +14,6 @@ public class Test : MonoBehaviour
     /// </summary>
     public void ForTesting()
     {
-        
+
     }
 }

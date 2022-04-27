@@ -255,7 +255,7 @@ public class SceneController : MonoBehaviour
             fGraphic.gameObject.GetComponent<Image>().color = Color.white;
         }
         
-        if (currentScene.sc.lText && currentScene.sc.rText)
+        if (currentScene.sc.lText && currentScene.sc.rText && currentScene.nextScene != null)
         {
             lText.text = "";
             foreach (string str in fr.ReadFromFile("T" + currentScene.sceneName))
@@ -267,6 +267,29 @@ public class SceneController : MonoBehaviour
             foreach (string str in fr.ReadFromFile("TT" + currentScene.sceneName))
             {
                 rText.text += str + "\n";
+            }
+        }
+        else if (currentScene.sc.lText && currentScene.sc.rText)
+        {
+            List<string> lEndings = fr.ReadFromFile("T" + currentScene.sceneName + "E");
+            List<string> rEndings = fr.ReadFromFile("TT" + currentScene.sceneName + "E");
+            int max = Mathf.Max(gameController.strength, gameController.intelligence, gameController.trickery);
+            lText.text = "";
+            rText.text = "";
+            if (gameController.strength == max)
+            {
+                lText.text = lEndings[0];
+                rText.text = rEndings[0];
+            }
+            else if (gameController.intelligence == max)
+            {
+                lText.text = lEndings[1];
+                rText.text = rEndings[1];
+            }
+            else
+            {
+                lText.text = lEndings[2];
+                rText.text = rEndings[2];
             }
         }
     }

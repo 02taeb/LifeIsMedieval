@@ -50,12 +50,15 @@ public class GameController : MonoBehaviour
         files.Add("SC1.3");
         files.Add("SC1.4");
         files.Add("SC2.1");
+        files.Add("SC3.1");
         files.Add("TSC1.1");
         files.Add("TSC1.2");
         files.Add("TSC1.3");
         files.Add("TSC1.4");
         files.Add("TSC2.1");
+        files.Add("TSC3.1E");
         files.Add("TTSC2.1");
+        files.Add("TTSC3.1E");
 
         Environment.CurrentDirectory = currentDirectory;
 

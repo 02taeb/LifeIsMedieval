@@ -9,4 +9,4 @@ INTELLIGENCE
 Let the thief go but call the authorities
 You tell the thief that they're free to go. After they've left you call the authorities on them with a detailed description.
 TRICKERY
-1
+2

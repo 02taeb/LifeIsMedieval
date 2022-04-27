@@ -30,11 +30,23 @@ public class SceneController : MonoBehaviour
         else
             GameObject.Find("BtnNextStory").GetComponent<Button>().interactable = true;
 
+        currentScene.completed = false;
+
         if (!currentScene.sc.lBtns && !currentScene.sc.rBtns)
             currentScene.completed = true;
-        if (gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "1")
-            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "2")
-            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "3"))
+        if (gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "1S")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "2S")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "3S")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "4S")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "5S")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "6S"))
+            currentScene.completed = true;
+        if (gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "1F")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "2F")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "3F")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "4F")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "5F")
+            || gameController.madeDecisions.Contains(currentScene.sceneName.Substring(2) + "6F"))
             currentScene.completed = true;
 
         if (!currentScene.completed)
@@ -308,21 +320,6 @@ public class SceneController : MonoBehaviour
         btnTexts[buttonIndex].text = choices[buttonIndex].btnText;
         btnFlavTexts[buttonIndex].text = choices[buttonIndex].flavourText;
         buttons[buttonIndex].interactable = true;
-
-        switch (choices[buttonIndex].req)
-        {
-            case Choice.Req.STRENGTH:
-                break;
-
-            case Choice.Req.INTELLIGENCE:
-                break;
-
-            case Choice.Req.TRICKERY:
-                break;
-
-            case Choice.Req.NONE:
-                break;
-        }
     }
 
     /// <summary>
@@ -343,31 +340,11 @@ public class SceneController : MonoBehaviour
     }
 
     /// <summary>
-    /// Choice data container for button.
+    /// Gets clone of local Choice[].
     /// </summary>
-    public class Choice
+    /// <returns>choices.Clone();</returns>
+    public Choice[] GetChoices()
     {
-        public string btnText = "";
-        public string flavourText = "";
-        public Req req = Req.NONE;
-        public int reqNum;
-
-        /// <summary>
-        /// Checks that a Choice is correctly set up.
-        /// <br></br>
-        /// Choice is correctly set up if btnText and flavourText have assigned values and an optional requirement is set with necessary reqValue.
-        /// </summary>
-        /// <returns>true if correct, else false</returns>
-        public bool CheckValidity()
-        {
-            return !string.IsNullOrEmpty(btnText) && 
-                    !string.IsNullOrEmpty(flavourText) && 
-                    (req == Req.NONE ? reqNum == 0 : reqNum > 0);
-        }
-
-        /// <summary>
-        /// Possible requirements for making a choice.
-        /// </summary>
-        public enum Req { STRENGTH, INTELLIGENCE, TRICKERY, NONE }
+        return (Choice[])choices.Clone();
     }
 }

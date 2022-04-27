@@ -312,24 +312,12 @@ public class SceneController : MonoBehaviour
         switch (choices[buttonIndex].req)
         {
             case Choice.Req.STRENGTH:
-                if (choices[buttonIndex].reqNum > gameController.strength)
-                {
-                    buttons[buttonIndex].interactable = false;
-                }
                 break;
 
             case Choice.Req.INTELLIGENCE:
-                if (choices[buttonIndex].reqNum > gameController.intellect)
-                {
-                    buttons[buttonIndex].interactable = false;
-                }
                 break;
 
             case Choice.Req.TRICKERY:
-                if (choices[buttonIndex].reqNum > gameController.trickery)
-                {
-                    buttons[buttonIndex].interactable = false;
-                }
                 break;
 
             case Choice.Req.NONE:

@@ -13,4 +13,13 @@ public class ButtonAudio : MonoBehaviour
         source.PlayOneShot(clip);
     }
 
+    /*void BasicVariationTechniques()
+    {
+
+
+        source.volume = Random.Range(minVolume, maxVolume);
+        source.pitch = Random.Range(minPitch, maxPitch);
+        source.PlayOneShot(sound_clip);
+    }*/
+
 }

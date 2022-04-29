@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8379041897660414370}
   - component: {fileID: 7873533839791708879}
   m_Layer: 0
-  m_Name: SC3
+  m_Name: SC3.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

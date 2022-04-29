@@ -191,105 +191,335 @@ public class SceneController : MonoBehaviour
     /// <param name="strings">List&lt;string&gt; with values.</param>
     private void SetObjectValues(List<string> strings)
     {
-        if (currentScene.sc.lText && !currentScene.sc.rText)
+        string currentDirectory = Environment.CurrentDirectory;
+        try
         {
-            lText.text = "";
-            foreach (string str in fr.ReadFromFile("T" + currentScene.sceneName))
+            char[] sceneNameArr = currentScene.sceneName.Substring(2).ToCharArray();
+            sceneNameArr[2] = (int.Parse(sceneNameArr[2].ToString()) - 1).ToString().ToCharArray()[0];
+            string sceneName = new string(sceneNameArr);
+            List<string> aftermath = fr.ReadFromFile("A" + currentScene.sceneName);
+            if (gameController.madeDecisions.Contains(sceneName + "0S")
+                    || gameController.madeDecisions.Contains(sceneName + "3S"))
             {
-                lText.text += str + "\n";
+                lText.text = aftermath[2];
+                if (!bool.Parse(aftermath[1]))
+                {
+                    string stat = aftermath[0].Substring(2, 1);
+                    int diff = int.Parse(aftermath[0].Substring(0, 2));
+                    switch (stat)
+                    {
+                        case "S":
+                            gameController.strength += diff;
+                            aftermath[1] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
+                        case "I":
+                            gameController.intelligence += diff;
+                            aftermath[1] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
+                        case "T":
+                            gameController.trickery += diff;
+                            aftermath[1] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
+                        case "L":
+                            gameController.lives += diff;
+                            aftermath[1] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
+                        default:
+                            Debug.Log("Invalid aftermath file");
+                            break;
+                    }
+                }
             }
-        }
-        else if (currentScene.sc.lGraphic)
-        {
-            lGraphic.sprite = currentScene.sprite;
-            lGraphic.gameObject.GetComponent<Image>().color = Color.white;
-        }
-        else if (currentScene.sc.lBtns)
-        {
-            try
+            else if (gameController.madeDecisions.Contains(sceneName + "1S")
+                || gameController.madeDecisions.Contains(sceneName + "4S"))
             {
-                LSetChoices();
+                lText.text = aftermath[6];
+                if (!bool.Parse(aftermath[5]))
+                {
+                    string stat = aftermath[4].Substring(2, 1);
+                    int diff = int.Parse(aftermath[4].Substring(0, 2));
+                    switch (stat)
+                    {
+                        case "S":
+                            gameController.strength += diff;
+                            aftermath[5] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
+                        case "I":
+                            gameController.intelligence += diff;
+                            aftermath[5] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
+                        case "T":
+                            gameController.trickery += diff;
+                            aftermath[5] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
+                        case "L":
+                            gameController.lives += diff;
+                            aftermath[5] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
+                        default:
+                            Debug.Log("Invalid aftermath file");
+                            break;
+                    }
+                }
+            }
+            else if (gameController.madeDecisions.Contains(sceneName + "2S")
+                || gameController.madeDecisions.Contains(sceneName + "5S"))
+            {
+                lText.text = aftermath[10];
+                if (!bool.Parse(aftermath[9]))
+                {
+                    string stat = aftermath[8].Substring(2, 1);
+                    int diff = int.Parse(aftermath[8].Substring(0, 2));
+                    switch (stat)
+                    {
+                        case "S":
+                            gameController.strength += diff;
+                            aftermath[9] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
+                        case "I":
+                            gameController.intelligence += diff;
+                            aftermath[9] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
+                        case "T":
+                            gameController.trickery += diff;
+                            aftermath[9] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
+                        case "L":
+                            gameController.lives += diff;
+                            aftermath[9] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
+                        default:
+                            Debug.Log("Invalid aftermath file");
+                            break;
+                    }
+                }
+            }
+            else if (gameController.madeDecisions.Contains(sceneName + "0F")
+                || gameController.madeDecisions.Contains(sceneName + "3F"))
+            {
+                lText.text = aftermath[3];
+                if (!bool.Parse(aftermath[1]))
+                {
+                    string stat = aftermath[0].Substring(6, 1);
+                    int diff = int.Parse(aftermath[0].Substring(4, 2));
+                    switch (stat)
+                    {
+                        case "S":
+                            gameController.strength += diff;
+                            aftermath[1] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
+                        case "I":
+                            gameController.intelligence += diff;
+                            aftermath[1] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
+                        case "T":
+                            gameController.trickery += diff;
+                            aftermath[1] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
+                        case "L":
+                            gameController.lives += diff;
+                            aftermath[1] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
+                        default:
+                            Debug.Log("Invalid aftermath file");
+                            break;
+                    }
+                }
+            }
+            else if (gameController.madeDecisions.Contains(sceneName + "1F")
+                || gameController.madeDecisions.Contains(sceneName + "4F"))
+            {
+                lText.text = aftermath[7];
+                if (!bool.Parse(aftermath[5]))
+                {
+                    string stat = aftermath[4].Substring(6, 1);
+                    int diff = int.Parse(aftermath[4].Substring(4, 2));
+                    switch (stat)
+                    {
+                        case "S":
+                            gameController.strength += diff;
+                            aftermath[5] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
+                        case "I":
+                            gameController.intelligence += diff;
+                            aftermath[5] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
+                        case "T":
+                            gameController.trickery += diff;
+                            aftermath[5] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
+                        case "L":
+                            gameController.lives += diff;
+                            aftermath[5] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
+                        default:
+                            Debug.Log("Invalid aftermath file");
+                            break;
+                    }
+                }
+            }
+            else if (gameController.madeDecisions.Contains(sceneName + "2F")
+                || gameController.madeDecisions.Contains(sceneName + "5F"))
+            {
+                lText.text = aftermath[11];
+                if (!bool.Parse(aftermath[9]))
+                {
+                    string stat = aftermath[8].Substring(6, 1);
+                    int diff = int.Parse(aftermath[8].Substring(4, 2));
+                    switch (stat)
+                    {
+                        case "S":
+                            gameController.strength += diff;
+                            aftermath[9] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
+                        case "I":
+                            gameController.intelligence += diff;
+                            aftermath[9] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
+                        case "T":
+                            gameController.trickery += diff;
+                            aftermath[9] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
+                        case "L":
+                            gameController.lives += diff;
+                            aftermath[9] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
+                        default:
+                            Debug.Log("Invalid aftermath file");
+                            break;
+                    }
+                }
+            }
 
-                SetButton(0);
-                SetButton(1);
-                SetButton(2);
-            }
-            catch (FileNotFoundException)
-            {
-                Debug.Log("B" + currentScene.sceneName + " not found!");
-            }
-        }
-
-        if (currentScene.sc.rText && !currentScene.sc.lText)
-        {
-            rText.text = "";
-            foreach (string str in fr.ReadFromFile("T" + currentScene.sceneName))
-            {
-                rText.text += str + "\n";
-            }
-        }
-        else if (currentScene.sc.rGraphic)
-        {
             rGraphic.sprite = currentScene.sprite;
-            rGraphic.gameObject.GetComponent<Image>().color = Color.white;
         }
-        else if (currentScene.sc.rBtns)
+        catch (Exception)
         {
-            try
+            Environment.CurrentDirectory = currentDirectory;
+            if (currentScene.sc.lText && !currentScene.sc.rText)
             {
-                RSetChoices();
+                lText.text = "";
+                foreach (string str in fr.ReadFromFile("T" + currentScene.sceneName))
+                {
+                    lText.text += str + "\n";
+                }
+            }
+            else if (currentScene.sc.lGraphic)
+            {
+                lGraphic.sprite = currentScene.sprite;
+                lGraphic.gameObject.GetComponent<Image>().color = Color.white;
+            }
+            else if (currentScene.sc.lBtns)
+            {
+                try
+                {
+                    LSetChoices();
 
-                SetButton(3);
-                SetButton(4);
-                SetButton(5);
-            }
-            catch (FileNotFoundException)
-            {
-                Debug.Log("B" + currentScene.sceneName + " not found!");
-            }
-        }
-
-        if (currentScene.sc.fGraphic)
-        {
-            fGraphic.sprite = currentScene.sprite;
-            fGraphic.gameObject.GetComponent<Image>().color = Color.white;
-        }
-        
-        if (currentScene.sc.lText && currentScene.sc.rText && currentScene.nextScene != null)
-        {
-            lText.text = "";
-            foreach (string str in fr.ReadFromFile("T" + currentScene.sceneName))
-            {
-                lText.text += str + "\n";
+                    SetButton(0);
+                    SetButton(1);
+                    SetButton(2);
+                }
+                catch (FileNotFoundException)
+                {
+                    Debug.Log("B" + currentScene.sceneName + " not found!");
+                }
             }
 
-            rText.text = "";
-            foreach (string str in fr.ReadFromFile("TT" + currentScene.sceneName))
+            if (currentScene.sc.rText && !currentScene.sc.lText)
             {
-                rText.text += str + "\n";
+                rText.text = "";
+                foreach (string str in fr.ReadFromFile("T" + currentScene.sceneName))
+                {
+                    rText.text += str + "\n";
+                }
             }
-        }
-        else if (currentScene.sc.lText && currentScene.sc.rText)
-        {
-            List<string> lEndings = fr.ReadFromFile("T" + currentScene.sceneName + "E");
-            List<string> rEndings = fr.ReadFromFile("TT" + currentScene.sceneName + "E");
-            int max = Mathf.Max(gameController.strength, gameController.intelligence, gameController.trickery);
-            lText.text = "";
-            rText.text = "";
-            if (gameController.strength == max)
+            else if (currentScene.sc.rGraphic)
             {
-                lText.text = lEndings[0];
-                rText.text = rEndings[0];
+                rGraphic.sprite = currentScene.sprite;
+                rGraphic.gameObject.GetComponent<Image>().color = Color.white;
             }
-            else if (gameController.intelligence == max)
+            else if (currentScene.sc.rBtns)
             {
-                lText.text = lEndings[1];
-                rText.text = rEndings[1];
+                try
+                {
+                    RSetChoices();
+
+                    SetButton(3);
+                    SetButton(4);
+                    SetButton(5);
+                }
+                catch (FileNotFoundException)
+                {
+                    Debug.Log("B" + currentScene.sceneName + " not found!");
+                }
             }
-            else
+
+            if (currentScene.sc.fGraphic)
             {
-                lText.text = lEndings[2];
-                rText.text = rEndings[2];
+                fGraphic.sprite = currentScene.sprite;
+                fGraphic.gameObject.GetComponent<Image>().color = Color.white;
+            }
+
+            if (currentScene.sc.lText && currentScene.sc.rText && currentScene.nextScene != null)
+            {
+                lText.text = "";
+                foreach (string str in fr.ReadFromFile("T" + currentScene.sceneName))
+                {
+                    lText.text += str + "\n";
+                }
+
+                rText.text = "";
+                foreach (string str in fr.ReadFromFile("TT" + currentScene.sceneName))
+                {
+                    rText.text += str + "\n";
+                }
+            }
+            else if (currentScene.sc.lText && currentScene.sc.rText)
+            {
+                List<string> lEndings = fr.ReadFromFile("T" + currentScene.sceneName + "E");
+                List<string> rEndings = fr.ReadFromFile("TT" + currentScene.sceneName + "E");
+                int max = Mathf.Max(gameController.strength, gameController.intelligence, gameController.trickery);
+                lText.text = "";
+                rText.text = "";
+                if (gameController.strength == max)
+                {
+                    lText.text = lEndings[0];
+                    rText.text = rEndings[0];
+                }
+                else if (gameController.intelligence == max)
+                {
+                    lText.text = lEndings[1];
+                    rText.text = rEndings[1];
+                }
+                else
+                {
+                    lText.text = lEndings[2];
+                    rText.text = rEndings[2];
+                }
             }
         }
     }

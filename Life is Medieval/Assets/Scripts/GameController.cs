@@ -16,6 +16,8 @@ public class GameController : MonoBehaviour
     public int intelligence = 0;
     [NonSerialized]
     public int trickery = 0;
+    [NonSerialized]
+    public int lives = 3;
     public string currentScene = "SC1.1";
     [NonSerialized]
     public List<string> madeDecisions = new List<string>();
@@ -28,6 +30,7 @@ public class GameController : MonoBehaviour
         Debug.Log(strength.ToString());
         Debug.Log(intelligence.ToString());
         Debug.Log(trickery.ToString());
+        Debug.Log(lives.ToString());
         Debug.Log(currentScene.ToString());
         foreach (string decision in madeDecisions)
         {
@@ -44,11 +47,13 @@ public class GameController : MonoBehaviour
         List<string> files = new List<string>();
         string currentDirectory = Environment.CurrentDirectory;
 
+        files.Add("ASC1.5");
         files.Add("BSC1.4");
         files.Add("SC1.1");
         files.Add("SC1.2");
         files.Add("SC1.3");
         files.Add("SC1.4");
+        files.Add("SC1.5");
         files.Add("SC2.1");
         files.Add("SC3.1");
         files.Add("TSC1.1");
@@ -192,6 +197,7 @@ public class GameController : MonoBehaviour
         toSave.Add(strength.ToString());
         toSave.Add(intelligence.ToString());
         toSave.Add(trickery.ToString());
+        toSave.Add(lives.ToString());
         toSave.Add(currentScene.ToString());
         foreach (string decision in madeDecisions)
         {
@@ -214,9 +220,10 @@ public class GameController : MonoBehaviour
         strength = int.Parse(toLoad.ElementAt(0));
         intelligence = int.Parse(toLoad.ElementAt(1));
         trickery = int.Parse(toLoad.ElementAt(2));
-        currentScene = toLoad.ElementAt(3);
+        lives = int.Parse(toLoad.ElementAt(3));
+        currentScene = toLoad.ElementAt(4);
         
-        for (int i = 4; i < toLoad.Count; i++)
+        for (int i = 5; i < toLoad.Count; i++)
         {
             if (!madeDecisions.Contains(toLoad.ElementAt(i)))
                 madeDecisions.Add(toLoad.ElementAt(i));

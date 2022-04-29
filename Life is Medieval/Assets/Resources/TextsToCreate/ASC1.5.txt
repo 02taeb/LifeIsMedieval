@@ -1,0 +1,12 @@
++2S/-1L
+false
+You defeated the evil dragon
+You got f*cked by the evil dragon
++2I/-1S
+false
+You outsmarted the evil dragon
+You tried to outsmart the evil dragon but had to run away like a coward
++2T/-0
+false
+You sneaked by the dragon and successfully managed to steal one of its eggs, this will surely fetch a nice price.
+You sneaked by the dragon and tried to steal one of its eggs but the dragon woke up and it was all you could do just to get away unharmed.

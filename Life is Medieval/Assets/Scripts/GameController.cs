@@ -65,16 +65,11 @@ public class GameController : MonoBehaviour
         files.Add("TTSC2.1");
         files.Add("TTSC3.1E");
 
-        Environment.CurrentDirectory = currentDirectory;
-
         foreach (string file in files)
         {
-            Environment.CurrentDirectory = currentDirectory;
             fr.WriteToFile(file, TextAssetToList((TextAsset)Resources.Load("TextsToCreate/" + file)));
             Environment.CurrentDirectory = currentDirectory;
         }
-
-        Environment.CurrentDirectory = currentDirectory;
     }
 
     /// <summary>
@@ -128,6 +123,41 @@ public class GameController : MonoBehaviour
         LoadGame();
         staticVolume = PlayerPrefs.GetFloat("Volume");
         volume = staticVolume;
+    }
+
+    private void PlayerDeath()
+    {
+        // Will these values be overwritten somewhere else?
+        // Return to main menu or force first scene somehow.
+        // Maybe have another method which forces the player to main menu and then runs this
+        // both to avoid overwriting and to reset progress.
+        strength = 0;
+        intelligence = 0;
+        trickery = 0;
+        lives = 3;
+        currentScene = "SC1.1";
+        madeDecisions.Clear();
+        SaveGame();
+
+        // Reset aftermath files
+        FileReader fr = new FileReader();
+        List<string> files = new List<string>();
+        string currentDirectory = Environment.CurrentDirectory;
+
+        files.Add("ASC1.5");
+        foreach (string file in files)
+        {
+            List<string> strings = fr.ReadFromFile(file);
+            for (int i = 0; i < strings.Count; i++)
+            {
+                if (strings[i] == "true")
+                {
+                    strings[i] = "false";
+                }
+            }
+            fr.WriteToFile(file, strings);
+            Environment.CurrentDirectory = currentDirectory;
+        }
     }
 
     /// <summary>

@@ -126,7 +126,10 @@ public class GameController : MonoBehaviour
     {
         // https://discord.com/channels/961255353008406598/964194314873884672/968813090592419870 
         // PlayerPrefs.SetFloat("Volume", 1.0f);
-        PlayerPrefs.SetString("Dead", "false");
+        if (!PlayerPrefs.HasKey("Dead"))
+        {
+            PlayerPrefs.SetString("Dead", "false");
+        }
         CreateFiles();
         LoadGame();
         staticVolume = PlayerPrefs.GetFloat("Volume");

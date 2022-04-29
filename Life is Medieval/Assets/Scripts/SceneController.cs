@@ -194,17 +194,26 @@ public class SceneController : MonoBehaviour
         string currentDirectory = Environment.CurrentDirectory;
         try
         {
+            List<string> aftermath = fr.ReadFromFile("A" + currentScene.sceneName);
             char[] sceneNameArr = currentScene.sceneName.Substring(2).ToCharArray();
             sceneNameArr[2] = (int.Parse(sceneNameArr[2].ToString()) - 1).ToString().ToCharArray()[0];
             string sceneName = new string(sceneNameArr);
-            List<string> aftermath = fr.ReadFromFile("A" + currentScene.sceneName);
             if (gameController.madeDecisions.Contains(sceneName + "0S")
                     || gameController.madeDecisions.Contains(sceneName + "3S"))
             {
                 lText.text = aftermath[2];
                 if (!bool.Parse(aftermath[1]))
                 {
-                    string stat = aftermath[0].Substring(2, 1);
+                    string stat;
+                    try
+                    {
+                        stat = aftermath[0].Substring(2, 1);
+                    }
+                    catch (Exception)
+                    {
+                        stat = "A";
+                    }
+                    
                     int diff = int.Parse(aftermath[0].Substring(0, 2));
                     switch (stat)
                     {
@@ -228,6 +237,10 @@ public class SceneController : MonoBehaviour
                             aftermath[1] = "true";
                             fr.WriteToFile("A" + currentScene.sceneName, aftermath);
                             break;
+                        case "A":
+                            aftermath[1] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
                         default:
                             Debug.Log("Invalid aftermath file");
                             break;
@@ -240,7 +253,15 @@ public class SceneController : MonoBehaviour
                 lText.text = aftermath[6];
                 if (!bool.Parse(aftermath[5]))
                 {
-                    string stat = aftermath[4].Substring(2, 1);
+                    string stat;
+                    try
+                    {
+                        stat = aftermath[4].Substring(2, 1);
+                    }
+                    catch (Exception)
+                    {
+                        stat = "A";
+                    }
                     int diff = int.Parse(aftermath[4].Substring(0, 2));
                     switch (stat)
                     {
@@ -264,6 +285,10 @@ public class SceneController : MonoBehaviour
                             aftermath[5] = "true";
                             fr.WriteToFile("A" + currentScene.sceneName, aftermath);
                             break;
+                        case "A":
+                            aftermath[5] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
                         default:
                             Debug.Log("Invalid aftermath file");
                             break;
@@ -276,7 +301,15 @@ public class SceneController : MonoBehaviour
                 lText.text = aftermath[10];
                 if (!bool.Parse(aftermath[9]))
                 {
-                    string stat = aftermath[8].Substring(2, 1);
+                    string stat;
+                    try
+                    {
+                        stat = aftermath[8].Substring(2, 1);
+                    }
+                    catch (Exception)
+                    {
+                        stat = "A";
+                    }
                     int diff = int.Parse(aftermath[8].Substring(0, 2));
                     switch (stat)
                     {
@@ -300,6 +333,10 @@ public class SceneController : MonoBehaviour
                             aftermath[9] = "true";
                             fr.WriteToFile("A" + currentScene.sceneName, aftermath);
                             break;
+                        case "A":
+                            aftermath[9] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
                         default:
                             Debug.Log("Invalid aftermath file");
                             break;
@@ -312,7 +349,15 @@ public class SceneController : MonoBehaviour
                 lText.text = aftermath[3];
                 if (!bool.Parse(aftermath[1]))
                 {
-                    string stat = aftermath[0].Substring(6, 1);
+                    string stat;
+                    try
+                    {
+                        stat = aftermath[0].Substring(6, 1);
+                    }
+                    catch (Exception)
+                    {
+                        stat = "A";
+                    }
                     int diff = int.Parse(aftermath[0].Substring(4, 2));
                     switch (stat)
                     {
@@ -336,6 +381,10 @@ public class SceneController : MonoBehaviour
                             aftermath[1] = "true";
                             fr.WriteToFile("A" + currentScene.sceneName, aftermath);
                             break;
+                        case "A":
+                            aftermath[1] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
                         default:
                             Debug.Log("Invalid aftermath file");
                             break;
@@ -348,7 +397,15 @@ public class SceneController : MonoBehaviour
                 lText.text = aftermath[7];
                 if (!bool.Parse(aftermath[5]))
                 {
-                    string stat = aftermath[4].Substring(6, 1);
+                    string stat;
+                    try
+                    {
+                        stat = aftermath[4].Substring(6, 1);
+                    }
+                    catch (Exception)
+                    {
+                        stat = "A";
+                    }
                     int diff = int.Parse(aftermath[4].Substring(4, 2));
                     switch (stat)
                     {
@@ -372,6 +429,10 @@ public class SceneController : MonoBehaviour
                             aftermath[5] = "true";
                             fr.WriteToFile("A" + currentScene.sceneName, aftermath);
                             break;
+                        case "A":
+                            aftermath[5] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
                         default:
                             Debug.Log("Invalid aftermath file");
                             break;
@@ -384,7 +445,15 @@ public class SceneController : MonoBehaviour
                 lText.text = aftermath[11];
                 if (!bool.Parse(aftermath[9]))
                 {
-                    string stat = aftermath[8].Substring(6, 1);
+                    string stat;
+                    try
+                    {
+                        stat = aftermath[8].Substring(6, 1);
+                    }
+                    catch (Exception)
+                    {
+                        stat = "A";
+                    }
                     int diff = int.Parse(aftermath[8].Substring(4, 2));
                     switch (stat)
                     {
@@ -408,6 +477,10 @@ public class SceneController : MonoBehaviour
                             aftermath[9] = "true";
                             fr.WriteToFile("A" + currentScene.sceneName, aftermath);
                             break;
+                        case "A":
+                            aftermath[9] = "true";
+                            fr.WriteToFile("A" + currentScene.sceneName, aftermath);
+                            break;
                         default:
                             Debug.Log("Invalid aftermath file");
                             break;
@@ -416,6 +489,7 @@ public class SceneController : MonoBehaviour
             }
 
             rGraphic.sprite = currentScene.sprite;
+            rGraphic.color = Color.white;
         }
         catch (Exception)
         {

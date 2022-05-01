@@ -54,6 +54,11 @@ public class SceneController : MonoBehaviour
         else
             GameObject.Find("BtnNextStory").GetComponent<Button>().interactable = true;
 
+        if (currentScene.nextScene == null)
+        {
+            GameObject.Find("BtnNextStory").GetComponent<Button>().interactable = false;
+        }
+
         if (currentScene.completed)
         {
             foreach (Button btn in buttons)

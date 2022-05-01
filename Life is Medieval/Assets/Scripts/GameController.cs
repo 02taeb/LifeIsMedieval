@@ -132,6 +132,9 @@ public class GameController : MonoBehaviour
         }
         CreateFiles();
         LoadGame();
+
+        if (!PlayerPrefs.HasKey("Volume"))
+            PlayerPrefs.SetFloat("Volume", 1.0f);
         staticVolume = PlayerPrefs.GetFloat("Volume");
         volume = staticVolume;
 

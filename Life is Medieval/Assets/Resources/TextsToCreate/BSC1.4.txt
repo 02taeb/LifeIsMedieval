@@ -1,0 +1,12 @@
+Kill the thief
+You strike the thief roughly, instantly killing him.
+NONE
+0
+Make the thief beholden to you
+You tell the thief that in exchange for not calling the authorities on them, they now owe you a favour of your choosing.
+INTELLIGENCE
+2
+Let the thief go but call the authorities
+You tell the thief that they're free to go. After they've left you call the authorities on them with a detailed description.
+TRICKERY
+1

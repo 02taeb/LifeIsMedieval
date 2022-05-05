@@ -13,12 +13,16 @@ public class ButtonAudioAndAnimation : MonoBehaviour,IPointerDownHandler,IPointe
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        _image.sprite = _pressed;
-        source.PlayOneShot(clip);
+        if (GetComponent<Button>().interactable)
+        {
+            _image.sprite = _pressed;
+            source.PlayOneShot(clip);
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        _image.sprite = _default;
+        if (GetComponent<Button>().interactable)
+            _image.sprite = _default;
     }
 }

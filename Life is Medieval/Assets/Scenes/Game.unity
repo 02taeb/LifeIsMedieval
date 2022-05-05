@@ -1947,7 +1947,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 764113559}
         m_TargetAssemblyTypeName: ButtonAudio, Assembly-CSharp
-        m_MethodName: ButtonSound
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

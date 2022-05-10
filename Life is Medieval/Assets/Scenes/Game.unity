@@ -1462,6 +1462,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1580835710}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: BookAnimationLeft
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &687327859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1513,7 +1525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   source: {fileID: 687327863}
-  clip: {fileID: 8300000, guid: d3ba925faea246344a41f1cf7e5a5a9d, type: 3}
+  clip: {fileID: 8300000, guid: 956f742b45f570446a3c932f20637dbb, type: 3}
   _image: {fileID: 687327859}
   _default: {fileID: 1111941721563079463, guid: 2c1e33a021c70b647b96953cb6e5174c, type: 3}
   _pressed: {fileID: 7800390818910862827, guid: 2c1e33a021c70b647b96953cb6e5174c, type: 3}
@@ -1957,6 +1969,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1580835710}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: BookAnimationRight
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &764113556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2008,7 +2032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   source: {fileID: 764113560}
-  clip: {fileID: 8300000, guid: d3ba925faea246344a41f1cf7e5a5a9d, type: 3}
+  clip: {fileID: 8300000, guid: 956f742b45f570446a3c932f20637dbb, type: 3}
   _image: {fileID: 764113556}
   _default: {fileID: 2923356117870465483, guid: 2c1e33a021c70b647b96953cb6e5174c, type: 3}
   _pressed: {fileID: 4544583228258970099, guid: 2c1e33a021c70b647b96953cb6e5174c, type: 3}
@@ -2873,8 +2897,9 @@ GameObject:
   - component: {fileID: 1580835707}
   - component: {fileID: 1580835709}
   - component: {fileID: 1580835708}
+  - component: {fileID: 1580835710}
   m_Layer: 5
-  m_Name: Scroll - Image
+  m_Name: Book - Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2894,10 +2919,10 @@ RectTransform:
   m_Father: {fileID: 2009462835}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -0.074401855}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.022261, y: 0.0000017728}
+  m_SizeDelta: {x: 793.9934, y: 446.7722}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1580835708
 MonoBehaviour:
@@ -2919,7 +2944,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 372773a1e4d11794c88cfba60e79f697, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 51a87972fef9d954aa02e4bd8088c654, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2937,6 +2962,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1580835706}
   m_CullTransparentMesh: 1
+--- !u!95 &1580835710
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580835706}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 19240b929ef1cf640ba8936686e817a0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1627895560
 GameObject:
   m_ObjectHideFlags: 0

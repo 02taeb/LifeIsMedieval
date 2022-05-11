@@ -144,6 +144,18 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void Restart()
+    {
+        strength = 0;
+        intelligence = 0;
+        trickery = 0;
+        lives = 3;
+        currentScene = "SC1.1";
+        madeDecisions.Clear();
+        SaveGame();
+        SceneManager.LoadScene(0);
+    }
+
     private void PlayerDeath()
     {
         GameObject gameObject = new GameObject("DeathMessage");

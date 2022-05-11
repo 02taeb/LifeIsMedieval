@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour
 {
-    public GameObject lPanel, rPanel, lbPanel, rbPanel;
+    public GameObject lPanel, rPanel, lbPanel, rbPanel, restartBtn;
     public Image fGraphic, lGraphic, rGraphic;
     public Text lText, rText;
     public Button[] buttons;
@@ -57,7 +57,10 @@ public class SceneController : MonoBehaviour
         if (currentScene.nextScene == null)
         {
             GameObject.Find("BtnNextStory").GetComponent<Button>().interactable = false;
+            restartBtn.SetActive(true);
         }
+        else 
+            restartBtn.SetActive(false);
 
         if (currentScene.completed)
         {

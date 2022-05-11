@@ -14,24 +14,19 @@ public class PauseMenu : MonoBehaviour
 
     public bool settingsActive = false;
 
-    // Update is called once per frame
-    void Update()
+    public void SettingsButton()
     {
-        
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (settingsActive)
-                return;
+        if (settingsActive)
+            return;
 
-            if (gameIsPaused)
-            {
-                Resume();
-            }
-            else
-            {
-                
-                    Pause();
-            }
+        if (gameIsPaused)
+        {
+            Resume();
+        }
+        else
+        {
+
+            Pause();
         }
     }
 

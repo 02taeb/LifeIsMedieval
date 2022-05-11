@@ -32,7 +32,26 @@ public class MakeDecision : MonoBehaviour
         }
         else
         {
-            btnImage.color = Color.white;
+            choices = GameObject.Find("SceneController").GetComponent<SceneController>().GetChoices();
+            switch (choices[buttonIndex].req)
+            {
+                case Choice.Req.STRENGTH:
+                    btnImage.color = new Color32(250, 120, 0, 255);
+                    break;
+
+                case Choice.Req.INTELLIGENCE:
+                    btnImage.color = new Color32(0, 235, 255, 255);
+                    break;
+
+                case Choice.Req.TRICKERY:
+                    btnImage.color = new Color32(0, 255, 46, 255);
+                    break;
+
+                case Choice.Req.NONE:
+                default:
+                    btnImage.color = Color.white;
+                    break;
+            }
         }
     }
 

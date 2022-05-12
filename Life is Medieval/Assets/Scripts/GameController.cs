@@ -125,8 +125,6 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        // https://discord.com/channels/961255353008406598/964194314873884672/968813090592419870 
-        // PlayerPrefs.SetFloat("Volume", 1.0f);
         if (!PlayerPrefs.HasKey("Dead"))
         {
             PlayerPrefs.SetString("Dead", "false");

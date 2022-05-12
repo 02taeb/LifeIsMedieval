@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SceneController : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class SceneController : MonoBehaviour
     public Text[] btnFlavTexts;
     public Choice[] choices = new Choice[6];
     public Scene currentScene;
+    public float writingSpeed = 50f, fadeSpeed = 50f;
     private FileReader fr = new FileReader();
     private GameController gameController;
 
@@ -209,7 +211,7 @@ public class SceneController : MonoBehaviour
             if (gameController.madeDecisions.Contains(sceneName + "0S")
                     || gameController.madeDecisions.Contains(sceneName + "3S"))
             {
-                lText.text = aftermath[2];
+                StartCoroutine(Write(aftermath[2], lText));
                 if (!bool.Parse(aftermath[1]))
                 {
                     string stat;
@@ -258,7 +260,7 @@ public class SceneController : MonoBehaviour
             else if (gameController.madeDecisions.Contains(sceneName + "1S")
                 || gameController.madeDecisions.Contains(sceneName + "4S"))
             {
-                lText.text = aftermath[6];
+                StartCoroutine(Write(aftermath[6], lText));
                 if (!bool.Parse(aftermath[5]))
                 {
                     string stat;
@@ -306,7 +308,7 @@ public class SceneController : MonoBehaviour
             else if (gameController.madeDecisions.Contains(sceneName + "2S")
                 || gameController.madeDecisions.Contains(sceneName + "5S"))
             {
-                lText.text = aftermath[10];
+                StartCoroutine(Write(aftermath[10], lText));
                 if (!bool.Parse(aftermath[9]))
                 {
                     string stat;
@@ -354,7 +356,7 @@ public class SceneController : MonoBehaviour
             else if (gameController.madeDecisions.Contains(sceneName + "0F")
                 || gameController.madeDecisions.Contains(sceneName + "3F"))
             {
-                lText.text = aftermath[3];
+                StartCoroutine(Write(aftermath[3], lText));
                 if (!bool.Parse(aftermath[1]))
                 {
                     string stat;
@@ -402,7 +404,7 @@ public class SceneController : MonoBehaviour
             else if (gameController.madeDecisions.Contains(sceneName + "1F")
                 || gameController.madeDecisions.Contains(sceneName + "4F"))
             {
-                lText.text = aftermath[7];
+                StartCoroutine(Write(aftermath[7], lText));
                 if (!bool.Parse(aftermath[5]))
                 {
                     string stat;
@@ -450,7 +452,7 @@ public class SceneController : MonoBehaviour
             else if (gameController.madeDecisions.Contains(sceneName + "2F")
                 || gameController.madeDecisions.Contains(sceneName + "5F"))
             {
-                lText.text = aftermath[11];
+                StartCoroutine(Write(aftermath[11], lText));
                 if (!bool.Parse(aftermath[9]))
                 {
                     string stat;
@@ -497,7 +499,7 @@ public class SceneController : MonoBehaviour
             }
 
             rGraphic.sprite = currentScene.sprite;
-            rGraphic.color = Color.white;
+            StartCoroutine(FadeImage(rGraphic));
         }
         catch (Exception)
         {
@@ -505,15 +507,22 @@ public class SceneController : MonoBehaviour
             if (currentScene.sc.lText && !currentScene.sc.rText)
             {
                 lText.text = "";
+                List<string> strs = new List<string>();
                 foreach (string str in fr.ReadFromFile("T" + currentScene.sceneName))
                 {
-                    lText.text += str + "\n";
+                    strs.Add(str + "\n");
                 }
+                string toWrite = "";
+                foreach (string str in strs)
+                {
+                    toWrite += str;
+                }
+                StartCoroutine(Write(toWrite, lText));
             }
             else if (currentScene.sc.lGraphic)
             {
                 lGraphic.sprite = currentScene.sprite;
-                lGraphic.gameObject.GetComponent<Image>().color = Color.white;
+                StartCoroutine(FadeImage(lGraphic.gameObject.GetComponent<Image>()));
             }
             else if (currentScene.sc.lBtns)
             {
@@ -534,15 +543,22 @@ public class SceneController : MonoBehaviour
             if (currentScene.sc.rText && !currentScene.sc.lText)
             {
                 rText.text = "";
+                List<string> strs = new List<string>();
                 foreach (string str in fr.ReadFromFile("T" + currentScene.sceneName))
                 {
-                    rText.text += str + "\n";
+                    strs.Add(str + "\n");
                 }
+                string toWrite = "";
+                foreach (string str in strs)
+                {
+                    toWrite += str;
+                }
+                StartCoroutine(Write(toWrite, rText));
             }
             else if (currentScene.sc.rGraphic)
             {
                 rGraphic.sprite = currentScene.sprite;
-                rGraphic.gameObject.GetComponent<Image>().color = Color.white;
+                StartCoroutine(FadeImage(rGraphic.gameObject.GetComponent<Image>()));
             }
             else if (currentScene.sc.rBtns)
             {
@@ -563,22 +579,36 @@ public class SceneController : MonoBehaviour
             if (currentScene.sc.fGraphic)
             {
                 fGraphic.sprite = currentScene.sprite;
-                fGraphic.gameObject.GetComponent<Image>().color = Color.white;
+                StartCoroutine(FadeImage(fGraphic.gameObject.GetComponent<Image>()));
             }
 
             if (currentScene.sc.lText && currentScene.sc.rText && currentScene.nextScene != null)
             {
                 lText.text = "";
+                List<string> strs = new List<string>();
                 foreach (string str in fr.ReadFromFile("T" + currentScene.sceneName))
                 {
-                    lText.text += str + "\n";
+                    strs.Add(str + "\n");
                 }
+                string toWrite = "";
+                foreach (string str in strs)
+                {
+                    toWrite += str;
+                }
+                StartCoroutine(Write(toWrite, lText));
 
                 rText.text = "";
+                List<string> strs2 = new List<string>();
                 foreach (string str in fr.ReadFromFile("TT" + currentScene.sceneName))
                 {
-                    rText.text += str + "\n";
+                    strs2.Add(str + "\n");
                 }
+                string toWrite2 = "";
+                foreach (string str in strs2)
+                {
+                    toWrite2 += str;
+                }
+                StartCoroutine(Write(toWrite2, rText));
             }
             else if (currentScene.sc.lText && currentScene.sc.rText)
             {
@@ -589,21 +619,81 @@ public class SceneController : MonoBehaviour
                 rText.text = "";
                 if (gameController.strength == max)
                 {
-                    lText.text = lEndings[0];
-                    rText.text = rEndings[0];
+                    StartCoroutine(Write(lEndings[0], lText));
+                    StartCoroutine(Write(rEndings[0], rText));
                 }
                 else if (gameController.intelligence == max)
                 {
-                    lText.text = lEndings[1];
-                    rText.text = rEndings[1];
+                    StartCoroutine(Write(lEndings[1], lText));
+                    StartCoroutine(Write(rEndings[1], rText));
                 }
                 else
                 {
-                    lText.text = lEndings[2];
-                    rText.text = rEndings[2];
+                    StartCoroutine(Write(lEndings[2], lText));
+                    StartCoroutine(Write(rEndings[2], rText));
                 }
             }
         }
+    }
+
+    private IEnumerator FadeImage(Image img)
+    {
+        float t = 0;
+        int alpha = 0;
+        img.color = new Color32(255, 255, 255, 0);
+        
+        while (img.color.a < 1f)
+        {
+            t += Time.deltaTime * fadeSpeed;
+            alpha = Mathf.FloorToInt(t);
+            alpha = Mathf.Clamp(alpha, 0, 255);
+
+            img.color = new Color32(255, 255, 255, (byte)alpha);
+
+            yield return null;
+        }
+
+        img.color = Color.white;
+    }
+
+    private IEnumerator Write(string textToWrite, Text label)
+    {
+        float t = 0;
+        int charIndex = 0;
+        label.text = String.Empty;
+
+        while (charIndex < textToWrite.Length)
+        {
+            t += Time.deltaTime * writingSpeed;
+            charIndex = Mathf.FloorToInt(t);
+            charIndex = Mathf.Clamp(charIndex, 0, textToWrite.Length);
+
+            label.text = textToWrite.Substring(0, charIndex);
+
+            yield return null;
+        }
+
+        label.text = textToWrite;
+    }
+
+    private IEnumerator Write(string textToWrite, TextMeshPro label)
+    {
+        float t = 0;
+        int charIndex = 0;
+        label.text = String.Empty;
+
+        while (charIndex < textToWrite.Length)
+        {
+            t += Time.deltaTime * writingSpeed;
+            charIndex = Mathf.FloorToInt(t);
+            charIndex = Mathf.Clamp(charIndex, 0, textToWrite.Length);
+
+            label.text = textToWrite.Substring(0, charIndex);
+
+            yield return null;
+        }
+
+        label.text = textToWrite;
     }
 
     /// <summary>
@@ -653,7 +743,8 @@ public class SceneController : MonoBehaviour
     private void SetButton(int buttonIndex)
     {
         btnTexts[buttonIndex].text = choices[buttonIndex].btnText;
-        btnFlavTexts[buttonIndex].text = choices[buttonIndex].flavourText;
+        // btnFlavTexts[buttonIndex].text = choices[buttonIndex].flavourText;
+        StartCoroutine(Write(choices[buttonIndex].flavourText, btnFlavTexts[buttonIndex]));
         buttons[buttonIndex].interactable = true;
     }
 

@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public float volume = 1.0f;
+    public Slider masterSlider;
     private static float staticVolume = 1.0f;
     [NonSerialized]
     public int strength = 0;
@@ -137,6 +138,8 @@ public class GameController : MonoBehaviour
             PlayerPrefs.SetFloat("Volume", 1.0f);
         staticVolume = PlayerPrefs.GetFloat("Volume");
         volume = staticVolume;
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+            DefaultSliders();
 
         if (PlayerPrefs.GetString("Dead").Equals("true"))
         {
@@ -314,5 +317,15 @@ public class GameController : MonoBehaviour
             if (!madeDecisions.Contains(toLoad.ElementAt(i)))
                 madeDecisions.Add(toLoad.ElementAt(i));
         }
+    }
+
+    public void SlideVolume(float vol)
+    {
+        volume = vol;
+    }
+
+    private void DefaultSliders()
+    {
+        masterSlider.value = volume;
     }
 }

@@ -16,7 +16,7 @@ public class SceneController : MonoBehaviour
     public Text[] btnFlavTexts;
     public Choice[] choices = new Choice[6];
     public Scene currentScene;
-    public float writingSpeed = 50f;
+    public float writingSpeed = 50f, fadeSpeed = 50f;
     private FileReader fr = new FileReader();
     private GameController gameController;
 
@@ -499,7 +499,7 @@ public class SceneController : MonoBehaviour
             }
 
             rGraphic.sprite = currentScene.sprite;
-            rGraphic.color = Color.white;
+            StartCoroutine(FadeImage(rGraphic));
         }
         catch (Exception)
         {
@@ -522,7 +522,7 @@ public class SceneController : MonoBehaviour
             else if (currentScene.sc.lGraphic)
             {
                 lGraphic.sprite = currentScene.sprite;
-                lGraphic.gameObject.GetComponent<Image>().color = Color.white;
+                StartCoroutine(FadeImage(lGraphic.gameObject.GetComponent<Image>()));
             }
             else if (currentScene.sc.lBtns)
             {
@@ -558,7 +558,7 @@ public class SceneController : MonoBehaviour
             else if (currentScene.sc.rGraphic)
             {
                 rGraphic.sprite = currentScene.sprite;
-                rGraphic.gameObject.GetComponent<Image>().color = Color.white;
+                StartCoroutine(FadeImage(rGraphic.gameObject.GetComponent<Image>()));
             }
             else if (currentScene.sc.rBtns)
             {
@@ -579,7 +579,7 @@ public class SceneController : MonoBehaviour
             if (currentScene.sc.fGraphic)
             {
                 fGraphic.sprite = currentScene.sprite;
-                fGraphic.gameObject.GetComponent<Image>().color = Color.white;
+                StartCoroutine(FadeImage(fGraphic.gameObject.GetComponent<Image>()));
             }
 
             if (currentScene.sc.lText && currentScene.sc.rText && currentScene.nextScene != null)
@@ -634,6 +634,26 @@ public class SceneController : MonoBehaviour
                 }
             }
         }
+    }
+
+    private IEnumerator FadeImage(Image img)
+    {
+        float t = 0;
+        int alpha = 0;
+        img.color = new Color32(255, 255, 255, 0);
+        
+        while (img.color.a < 1f)
+        {
+            t += Time.deltaTime * fadeSpeed;
+            alpha = Mathf.FloorToInt(t);
+            alpha = Mathf.Clamp(alpha, 0, 255);
+
+            img.color = new Color32(255, 255, 255, (byte)alpha);
+
+            yield return null;
+        }
+
+        img.color = Color.white;
     }
 
     private IEnumerator Write(string textToWrite, Text label)

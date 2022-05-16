@@ -15,8 +15,8 @@ Example:
 "Fail sound" by Sjonas88 on freesound.org CC0 1.0
 -----------------------------------------------------------------------------
 
-"Music/fantasy-background-music-loop.mp3" [Unedited]
-"Fantasy Bakcground Music (Loop)" by Migfus20 on freesound.org CC BY 4.0
+"Music/fantasy-background-music-loop.mp3" [Cut]
+"Fantasy Background Music (Loop)" by Migfus20 on freesound.org CC BY 4.0
 -----------------------------------------------------------------------------
 
 "Music/sad-rpg-town-background.mp3" [Unedited]

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class MakeDecision : MonoBehaviour
 {
+    public AudioSource audioSource;
+    public AudioClip success, fail;
     private GameController gameController;
     private Scene currentScene;
     private Choice[] choices;
@@ -104,11 +106,13 @@ public class MakeDecision : MonoBehaviour
     {
         madeDecisions.Add(currentScene.sceneName.Substring(2) + name.Substring(name.IndexOf(' ') + 1) + "S");
         btnImage.color = Color.green;
+        audioSource.PlayOneShot(success);
     }
 
     private void FailChoice()
     {
         madeDecisions.Add(currentScene.sceneName.Substring(2) + name.Substring(name.IndexOf(' ') + 1) + "F");
         btnImage.color = Color.red;
+        audioSource.PlayOneShot(fail);
     }
 }

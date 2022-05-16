@@ -16,7 +16,8 @@ public class ButtonAudioAndAnimation : MonoBehaviour,IPointerDownHandler,IPointe
         if (GetComponent<Button>().interactable)
         {
             _image.sprite = _pressed;
-            source.PlayOneShot(clip);
+            if (clip != null)
+                source.PlayOneShot(clip);
         }
     }
 

@@ -6,7 +6,7 @@ public class MusicPlayer : MonoBehaviour
 {
     public AudioClip[] tracks;
     private AudioSource audioSource;
-    private bool paused;
+    private bool paused, play = true;
 
     private void Start()
     {
@@ -17,8 +17,11 @@ public class MusicPlayer : MonoBehaviour
     {
         audioSource.volume = GameObject.Find("GameController").GetComponent<GameController>().musicVolume;
 
-        if (Time.timeScale != 0 && !audioSource.isPlaying && !paused)
+        if (Time.timeScale != 0 && !audioSource.isPlaying && !paused && play)
+        {
             StartCoroutine(Wait());
+        }
+            
             
         
         if (Time.timeScale == 0 && audioSource.isPlaying)
@@ -35,8 +38,12 @@ public class MusicPlayer : MonoBehaviour
 
     private IEnumerator Wait()
     {
+        play = false;
+        
         yield return new WaitForSeconds(1);
 
         audioSource.PlayOneShot(tracks[Random.Range(0, tracks.Length)]);
+
+        play = true;
     }
 }

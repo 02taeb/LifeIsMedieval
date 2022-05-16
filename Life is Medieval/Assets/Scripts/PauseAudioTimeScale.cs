@@ -16,6 +16,6 @@ public class PauseAudioTimeScale : MonoBehaviour
         if (Time.timeScale == 0 && audioSource.isPlaying)
             audioSource.Pause();
         else if (Time.timeScale != 0 && !audioSource.isPlaying)
-            audioSource.Play();
+            audioSource.UnPause();
     }
 }

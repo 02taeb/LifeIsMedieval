@@ -10,8 +10,10 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public float volume = 1.0f;
-    public Slider masterSlider;
+    public float musicVolume = 1.0f;
+    public Slider masterSlider, musicSlider;
     private static float staticVolume = 1.0f;
+    private static float staticMusicVolume = 1.0f;
     [NonSerialized]
     public int strength = 0;
     [NonSerialized]
@@ -97,7 +99,11 @@ public class GameController : MonoBehaviour
     {
         SetVolume();
         if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
             currentScene = GameObject.Find("SceneController").GetComponent<SceneController>().currentScene.sceneName;
+            MusicVolume();
+            MasterVolume();
+        }
         
         if (lives <= 0 && PlayerPrefs.GetString("Dead") == "false")
         {
@@ -134,8 +140,12 @@ public class GameController : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("Volume"))
             PlayerPrefs.SetFloat("Volume", 1.0f);
+        if (!PlayerPrefs.HasKey("Music"))
+            PlayerPrefs.SetFloat("Music", 1.0f);
         staticVolume = PlayerPrefs.GetFloat("Volume");
+        staticMusicVolume = PlayerPrefs.GetFloat("Music");
         volume = staticVolume;
+        musicVolume = staticMusicVolume;
         if (SceneManager.GetActiveScene().buildIndex == 1)
             DefaultSliders();
 
@@ -232,16 +242,21 @@ public class GameController : MonoBehaviour
     private void SetVolume()
     {
         staticVolume = volume;
+        staticMusicVolume = musicVolume;
+
         if (staticVolume < 0)
-        {
             staticVolume = 0.0f;
-        }
         else if (staticVolume > 1)
-        {
             staticVolume = 1.0f;
-        }
+
+        if (staticMusicVolume < 0)
+            staticMusicVolume = 0.0f;
+        else if (staticMusicVolume > 1)
+            staticMusicVolume = 1.0f;
+
         AudioListener.volume = staticVolume;
         PlayerPrefs.SetFloat("Volume", staticVolume);
+        PlayerPrefs.SetFloat("Music", staticMusicVolume);
     }
 
     /// <summary>
@@ -317,13 +332,19 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void SlideVolume(float vol)
+    private void MasterVolume()
     {
-        volume = vol;
+        volume = masterSlider.value;
+    }
+
+    private void MusicVolume()
+    {
+        musicVolume = musicSlider.value;
     }
 
     private void DefaultSliders()
     {
         masterSlider.value = volume;
+        musicSlider.value = musicVolume;
     }
 }

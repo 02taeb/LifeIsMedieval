@@ -7,6 +7,7 @@ public class MusicPlayer : MonoBehaviour
     public AudioClip[] tracks;
     private AudioSource audioSource;
     private bool paused, play = true;
+    private int lastPlayed, toPlay;
 
     private void Start()
     {
@@ -42,7 +43,12 @@ public class MusicPlayer : MonoBehaviour
         
         yield return new WaitForSeconds(1);
 
-        audioSource.PlayOneShot(tracks[Random.Range(0, tracks.Length)]);
+        do
+            toPlay = Random.Range(0, tracks.Length);
+        while (toPlay == lastPlayed);
+
+        audioSource.PlayOneShot(tracks[toPlay]);
+        lastPlayed = toPlay;
 
         play = true;
     }

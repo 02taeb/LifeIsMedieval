@@ -89,6 +89,7 @@ public class SceneController : MonoBehaviour
     /// <param name="sceneFileName">Scene Name on file</param>
     private void LoadScene(string sceneFileName)
     {
+        StopAllCoroutines();
         currentScene = ((GameObject)Resources.Load("StoryScenes/" + sceneFileName)).GetComponent<Scene>();
 
         List<string> strings = fr.ReadFromFile(sceneFileName);

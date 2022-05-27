@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class Scene : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class Scene : MonoBehaviour
     public Scene prevScene, nextScene;
     public string sceneName;
     public SceneConfiguration sc = new SceneConfiguration();
+    [NonSerialized]
     public bool completed;
 
     public class SceneConfiguration

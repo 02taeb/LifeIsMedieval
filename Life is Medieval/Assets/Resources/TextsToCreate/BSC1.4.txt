@@ -1,12 +1,12 @@
-Kill the thief
-You strike the thief roughly, instantly killing him.
-NONE
+Look at the hammer.
+The glimmer of the steel attracts your attention.
+STRENGTH
 0
-Make the thief beholden to you
-You tell the thief that in exchange for not calling the authorities on them, they now owe you a favour of your choosing.
+Gaze at the stars.
+The window by your side beacons you to peer into the heavens.
 INTELLIGENCE
-2
-Let the thief go but call the authorities
-You tell the thief that they're free to go. After they've left you call the authorities on them with a detailed description.
+0
+Point at the mouse.
+Your eyes wander about and settles on a mouse discreetly eating on a breadcrumb.
 TRICKERY
-1
+0

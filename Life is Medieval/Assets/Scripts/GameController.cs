@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     public float volume = 1.0f;
     public float musicVolume = 1.0f;
     public Slider masterSlider, musicSlider;
+    public GameObject deathMessage;
     private static float staticVolume = 1.0f;
     private static float staticMusicVolume = 1.0f;
     [NonSerialized]
@@ -149,7 +150,7 @@ public class GameController : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 1)
             DefaultSliders();
 
-        if (PlayerPrefs.GetString("Dead").Equals("true"))
+        if (PlayerPrefs.GetString("Dead").Equals("true") && SceneManager.GetActiveScene().buildIndex == 0)
         {
             PlayerDeath();
         }
@@ -169,17 +170,7 @@ public class GameController : MonoBehaviour
 
     private void PlayerDeath()
     {
-        GameObject gameObject = new GameObject("DeathMessage");
-        gameObject.AddComponent<RectTransform>();
-        gameObject.AddComponent<CanvasRenderer>();
-        gameObject.AddComponent<Text>();
-        gameObject.GetComponent<Text>().text = "You died!";
-        gameObject.GetComponent<Text>().font = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
-        gameObject.GetComponent<Text>().fontSize = 40;
-        gameObject.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
-        gameObject.GetComponent<Text>().color = Color.red;
-        gameObject.GetComponent<Text>().horizontalOverflow = HorizontalWrapMode.Overflow;
-        Instantiate(gameObject, GameObject.Find("Canvas").GetComponent<RectTransform>());
+        deathMessage.SetActive(true);
 
         StartCoroutine(DestroyMsg());
 
@@ -217,14 +208,7 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
 
-        try
-        {
-            Destroy(GameObject.Find("DeathMessage(Clone)"));
-        }
-        catch (Exception)
-        {
-
-        }
+        deathMessage.SetActive(false);
     }
 
     /// <summary>

@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce60b57a58c80344fbe7a785fa4d4fd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 5dfdad27218a7114c89d015a75ccbe9b, type: 3}
   prevScene: {fileID: 7873533839791708879, guid: 122df5291a6d86f459cd0ce59033b029, type: 3}
   nextScene: {fileID: 7873533839791708879, guid: 527afa276de287243821c23cd9592d96, type: 3}
   sceneName: SC2.5

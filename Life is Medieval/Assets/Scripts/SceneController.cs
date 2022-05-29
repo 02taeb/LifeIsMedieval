@@ -211,8 +211,8 @@ public class SceneController : MonoBehaviour
             string sceneName = new string(sceneNameArr);
             if (gameController.madeDecisions.Contains(sceneName + "0S")
                     || gameController.madeDecisions.Contains(sceneName + "3S")
-                    || (gameController.madeDecisions.Contains("1.90S") && sceneName.Equals("2.0"))
-                    || (gameController.madeDecisions.Contains("1.93S") && sceneName.Equals("2.0")))
+                    || (gameController.madeDecisions.Contains("1.90S") && sceneName.Equals("2.-"))
+                    || (gameController.madeDecisions.Contains("1.93S") && sceneName.Equals("2.-")))
             {
                 StartCoroutine(Write(aftermath[2], lText));
                 if (!bool.Parse(aftermath[1]))
@@ -262,8 +262,8 @@ public class SceneController : MonoBehaviour
             }
             else if (gameController.madeDecisions.Contains(sceneName + "1S")
                 || gameController.madeDecisions.Contains(sceneName + "4S")
-                || (gameController.madeDecisions.Contains("1.91S") && sceneName.Equals("2.0"))
-                || (gameController.madeDecisions.Contains("1.94S") && sceneName.Equals("2.0")))
+                || (gameController.madeDecisions.Contains("1.91S") && sceneName.Equals("2.-"))
+                || (gameController.madeDecisions.Contains("1.94S") && sceneName.Equals("2.-")))
             {
                 StartCoroutine(Write(aftermath[6], lText));
                 if (!bool.Parse(aftermath[5]))
@@ -312,8 +312,8 @@ public class SceneController : MonoBehaviour
             }
             else if (gameController.madeDecisions.Contains(sceneName + "2S")
                 || gameController.madeDecisions.Contains(sceneName + "5S")
-                || (gameController.madeDecisions.Contains("1.92S") && sceneName.Equals("2.0"))
-                || (gameController.madeDecisions.Contains("1.95S") && sceneName.Equals("2.0")))
+                || (gameController.madeDecisions.Contains("1.92S") && sceneName.Equals("2.-"))
+                || (gameController.madeDecisions.Contains("1.95S") && sceneName.Equals("2.-")))
             {
                 StartCoroutine(Write(aftermath[10], lText));
                 if (!bool.Parse(aftermath[9]))
@@ -362,8 +362,8 @@ public class SceneController : MonoBehaviour
             }
             else if (gameController.madeDecisions.Contains(sceneName + "0F")
                 || gameController.madeDecisions.Contains(sceneName + "3F")
-                || (gameController.madeDecisions.Contains("1.90F") && sceneName.Equals("2.0"))
-                || (gameController.madeDecisions.Contains("1.93F") && sceneName.Equals("2.0")))
+                || (gameController.madeDecisions.Contains("1.90F") && sceneName.Equals("2.-"))
+                || (gameController.madeDecisions.Contains("1.93F") && sceneName.Equals("2.-")))
             {
                 StartCoroutine(Write(aftermath[3], lText));
                 if (!bool.Parse(aftermath[1]))
@@ -412,8 +412,8 @@ public class SceneController : MonoBehaviour
             }
             else if (gameController.madeDecisions.Contains(sceneName + "1F")
                 || gameController.madeDecisions.Contains(sceneName + "4F")
-                || (gameController.madeDecisions.Contains("1.91F") && sceneName.Equals("2.0"))
-                || (gameController.madeDecisions.Contains("1.94F") && sceneName.Equals("2.0")))
+                || (gameController.madeDecisions.Contains("1.91F") && sceneName.Equals("2.-"))
+                || (gameController.madeDecisions.Contains("1.94F") && sceneName.Equals("2.-")))
             {
                 StartCoroutine(Write(aftermath[7], lText));
                 if (!bool.Parse(aftermath[5]))
@@ -462,8 +462,8 @@ public class SceneController : MonoBehaviour
             }
             else if (gameController.madeDecisions.Contains(sceneName + "2F")
                 || gameController.madeDecisions.Contains(sceneName + "5F")
-                || (gameController.madeDecisions.Contains("1.92F") && sceneName.Equals("2.0"))
-                || (gameController.madeDecisions.Contains("1.95F") && sceneName.Equals("2.0")))
+                || (gameController.madeDecisions.Contains("1.92F") && sceneName.Equals("2.-"))
+                || (gameController.madeDecisions.Contains("1.95F") && sceneName.Equals("2.-")))
             {
                 StartCoroutine(Write(aftermath[11], lText));
                 if (!bool.Parse(aftermath[9]))
@@ -654,19 +654,21 @@ public class SceneController : MonoBehaviour
         float t = 0;
         int alpha = 0;
         img.color = new Color32(255, 255, 255, 0);
-        
-        while (img.color.a < 1f)
+        if (currentScene.sprite != null)
         {
-            t += Time.deltaTime * fadeSpeed;
-            alpha = Mathf.FloorToInt(t);
-            alpha = Mathf.Clamp(alpha, 0, 255);
+            while (img.color.a < 1f)
+            {
+                t += Time.deltaTime * fadeSpeed;
+                alpha = Mathf.FloorToInt(t);
+                alpha = Mathf.Clamp(alpha, 0, 255);
 
-            img.color = new Color32(255, 255, 255, (byte)alpha);
+                img.color = new Color32(255, 255, 255, (byte)alpha);
 
-            yield return null;
+                yield return null;
+            }
+
+            img.color = Color.white;
         }
-
-        img.color = Color.white;
     }
 
     private IEnumerator Write(string textToWrite, Text label)

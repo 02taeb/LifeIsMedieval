@@ -48,6 +48,7 @@ public class GameController : MonoBehaviour
     /// </summary>
     private void CreateFiles()
     {
+        Debug.Log("Creating Files");
         FileReader fr = new FileReader();
         List<string> files = new List<string>();
         string currentDirectory = Environment.CurrentDirectory;
@@ -182,7 +183,7 @@ public class GameController : MonoBehaviour
         {
             PlayerPrefs.SetString("Dead", "false");
         }
-        if (!PlayerPrefs.HasKey("FilesMade") || !PlayerPrefs.GetString("FilesMade").Equals("False"))
+        if (!PlayerPrefs.HasKey("FilesMade") || PlayerPrefs.GetString("FilesMade").Equals("False"))
             CreateFiles();
         LoadGame();
 

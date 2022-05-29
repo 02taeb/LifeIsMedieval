@@ -23,8 +23,11 @@ public class MakeDecision : MonoBehaviour
         buttonIndexString = gameObject.name.Substring(gameObject.name.IndexOf(' ') + 1);
         buttonIndex = int.Parse(buttonIndexString);
         btnImage = gameObject.GetComponent<Image>();
+    }
 
-        if (madeDecisions.Contains(currentScene.sceneName.Substring(2) + buttonIndexString + "S")) 
+    private void Update()
+    {
+        if (madeDecisions.Contains(currentScene.sceneName.Substring(2) + buttonIndexString + "S"))
         {
             btnImage.color = Color.green;
         }
@@ -50,6 +53,8 @@ public class MakeDecision : MonoBehaviour
                     break;
 
                 case Choice.Req.NONE:
+                    btnImage.color = Color.white;
+                    break;
                 default:
                     btnImage.color = Color.white;
                     break;

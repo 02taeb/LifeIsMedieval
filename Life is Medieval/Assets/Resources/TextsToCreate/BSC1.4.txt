@@ -3,7 +3,7 @@ The glimmer of the steel attracts your attention.
 STRENGTH
 0
 Gaze at the stars.
-The window by your side beacons you to peer into the heavens.
+The window by your side beckons you to peer into the heavens.
 INTELLIGENCE
 0
 Point at the mouse.

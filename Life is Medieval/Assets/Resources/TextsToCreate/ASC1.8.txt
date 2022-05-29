@@ -4,7 +4,7 @@ You raise your clenched fist holding the pointy pebble into the air, and with a 
 No TXT
 +3I/-0L
 false
-The snake slithers away through the grass, and shortly thereafter it’s gone. Your mother comes back and smiles as she sees you.\n“It’s time we head back for dinner, my son,” she says and lifts you up. Knowing your mother has a fragile heart, you're glad she didn’t see the snake.
+The snake slithers away through the grass, and shortly thereafter it’s gone. Your mother comes back and smiles as she sees you. “It’s time we head back for dinner, my son,” she says and lifts you up. Knowing your mother has a fragile heart, you're glad she didn’t see the snake.
 No TXT
 +3T/-0L
 false

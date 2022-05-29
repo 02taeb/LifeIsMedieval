@@ -27228,6 +27228,7 @@ MonoBehaviour:
   musicVolume: 0
   masterSlider: {fileID: 4392149329217464353}
   musicSlider: {fileID: 4392149329599084221}
+  deathMessage: {fileID: 0}
   currentScene: SC1.1
 --- !u!114 &952319907
 MonoBehaviour:

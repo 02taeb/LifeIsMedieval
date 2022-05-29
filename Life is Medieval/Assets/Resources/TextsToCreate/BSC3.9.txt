@@ -1,0 +1,12 @@
+Fight!
+Saving the bailiff will surely pay dividends.
+STRENGTH
+12
+Distract & Mend
+Help the bailiff win and patch his open wound.
+INTELLIGENCE
+12
+Help the bandits
+The bailiff will die by his wounds either way.
+TRICKERY
+12

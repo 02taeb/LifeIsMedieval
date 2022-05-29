@@ -61,6 +61,7 @@ public class GameController : MonoBehaviour
         files.Add("ASC2.7");
         files.Add("ASC3.2");
         files.Add("ASC3.6");
+        files.Add("ASC4.0");
         files.Add("BSC1.4");
         files.Add("BSC1.7");
         files.Add("BSC1.9");
@@ -69,6 +70,7 @@ public class GameController : MonoBehaviour
         files.Add("BSC2.6");
         files.Add("BSC3.1");
         files.Add("BSC3.5");
+        files.Add("BSC3.9");
         files.Add("SC1.1");
         files.Add("SC1.2");
         files.Add("SC1.3");
@@ -95,6 +97,10 @@ public class GameController : MonoBehaviour
         files.Add("SC3.5");
         files.Add("SC3.6");
         files.Add("SC3.7");
+        files.Add("SC3.8");
+        files.Add("SC3.9");
+        files.Add("SC4.0");
+        files.Add("SC4.1");
         files.Add("TSC1.1");
         files.Add("TSC1.2");
         files.Add("TSC1.3");
@@ -113,7 +119,11 @@ public class GameController : MonoBehaviour
         files.Add("TSC3.4");
         files.Add("TSC3.5");
         files.Add("TSC3.7");
+        files.Add("TSC3.8");
+        files.Add("TSC3.9");
+        files.Add("TSC4.1E");
         files.Add("TTSC3.7");
+        files.Add("TTSC4.1E");
 
         foreach (string file in files)
         {

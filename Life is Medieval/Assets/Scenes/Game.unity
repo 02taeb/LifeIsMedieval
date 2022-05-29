@@ -286,7 +286,7 @@ MonoBehaviour:
   - {fileID: 2095750683}
   - {fileID: 896174762}
   currentScene: {fileID: 0}
-  writingSpeed: 100
+  writingSpeed: 1000
   fadeSpeed: 255
 --- !u!4 &126003980
 Transform:

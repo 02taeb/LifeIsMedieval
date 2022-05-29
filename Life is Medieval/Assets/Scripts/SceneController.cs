@@ -223,6 +223,8 @@ public class SceneController : MonoBehaviour
                     try
                     {
                         stat = aftermath[0].Substring(2, 1);
+                        if (currentScene.sceneName.Equals("SC4.0"))
+                            stat = aftermath[0].Substring(3, 1);
                     }
                     catch (Exception)
                     {
@@ -230,6 +232,8 @@ public class SceneController : MonoBehaviour
                     }
                     
                     int diff = int.Parse(aftermath[0].Substring(0, 2));
+                    if (currentScene.sceneName.Equals("SC4.0"))
+                        diff = int.Parse(aftermath[0].Substring(0, 3));
                     switch (stat)
                     {
                         case "S":
@@ -276,12 +280,16 @@ public class SceneController : MonoBehaviour
                     try
                     {
                         stat = aftermath[4].Substring(2, 1);
+                        if (currentScene.sceneName.Equals("SC4.0"))
+                            stat = aftermath[4].Substring(3, 1);
                     }
                     catch (Exception)
                     {
                         stat = "A";
                     }
                     int diff = int.Parse(aftermath[4].Substring(0, 2));
+                    if (currentScene.sceneName.Equals("SC4.0"))
+                        diff = int.Parse(aftermath[4].Substring(0, 3));
                     switch (stat)
                     {
                         case "S":
@@ -328,12 +336,16 @@ public class SceneController : MonoBehaviour
                     try
                     {
                         stat = aftermath[8].Substring(2, 1);
+                        if (currentScene.sceneName.Equals("SC4.0"))
+                            stat = aftermath[8].Substring(3, 1);
                     }
                     catch (Exception)
                     {
                         stat = "A";
                     }
                     int diff = int.Parse(aftermath[8].Substring(0, 2));
+                    if (currentScene.sceneName.Equals("SC4.0"))
+                        diff = int.Parse(aftermath[8].Substring(0, 3));
                     switch (stat)
                     {
                         case "S":
@@ -380,12 +392,16 @@ public class SceneController : MonoBehaviour
                     try
                     {
                         stat = aftermath[0].Substring(6, 1);
+                        if (currentScene.sceneName.Equals("SC4.0"))
+                            stat = aftermath[0].Substring(7, 1);
                     }
                     catch (Exception)
                     {
                         stat = "A";
                     }
                     int diff = int.Parse(aftermath[0].Substring(4, 2));
+                    if (currentScene.sceneName.Equals("SC4.0"))
+                        diff = int.Parse(aftermath[0].Substring(5, 2));
                     switch (stat)
                     {
                         case "S":
@@ -432,12 +448,16 @@ public class SceneController : MonoBehaviour
                     try
                     {
                         stat = aftermath[4].Substring(6, 1);
+                        if (currentScene.sceneName.Equals("SC4.0"))
+                            stat = aftermath[4].Substring(7, 1);
                     }
                     catch (Exception)
                     {
                         stat = "A";
                     }
                     int diff = int.Parse(aftermath[4].Substring(4, 2));
+                    if (currentScene.sceneName.Equals("SC4.0"))
+                        diff = int.Parse(aftermath[4].Substring(5, 2));
                     switch (stat)
                     {
                         case "S":
@@ -484,12 +504,16 @@ public class SceneController : MonoBehaviour
                     try
                     {
                         stat = aftermath[8].Substring(6, 1);
+                        if (currentScene.sceneName.Equals("SC4.0"))
+                            stat = aftermath[8].Substring(7, 1);
                     }
                     catch (Exception)
                     {
                         stat = "A";
                     }
                     int diff = int.Parse(aftermath[8].Substring(4, 2));
+                    if (currentScene.sceneName.Equals("SC4.0"))
+                        diff = int.Parse(aftermath[8].Substring(5, 2));
                     switch (stat)
                     {
                         case "S":

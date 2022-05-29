@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8379041897660414370}
   - component: {fileID: 7873533839791708879}
   m_Layer: 0
-  m_Name: SC3.7
+  m_Name: SC4.0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  prevScene: {fileID: 7873533839791708879, guid: 5519b6781972d3b4591700a124c2b3f1, type: 3}
-  nextScene: {fileID: 7873533839791708879, guid: a2387aacc0ab3424cbd97f95d4296175, type: 3}
-  sceneName: SC3.7
+  prevScene: {fileID: 7873533839791708879, guid: 372a5fa0d6be29240b956edd81404ed5, type: 3}
+  nextScene: {fileID: 7873533839791708879, guid: 4d1ce45632a9e014b87bfcc7b651c9cf, type: 3}
+  sceneName: SC4.0

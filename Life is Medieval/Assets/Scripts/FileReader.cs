@@ -41,6 +41,10 @@ public class FileReader
         {
             throw e;
         }
+        finally
+        {
+            Environment.CurrentDirectory = CurrentDirectory;
+        }
 
         Environment.CurrentDirectory = CurrentDirectory;
         return strings;

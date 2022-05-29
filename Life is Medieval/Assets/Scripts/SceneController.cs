@@ -212,7 +212,9 @@ public class SceneController : MonoBehaviour
             if (gameController.madeDecisions.Contains(sceneName + "0S")
                     || gameController.madeDecisions.Contains(sceneName + "3S")
                     || (gameController.madeDecisions.Contains("1.90S") && sceneName.Equals("2.-"))
-                    || (gameController.madeDecisions.Contains("1.93S") && sceneName.Equals("2.-")))
+                    || (gameController.madeDecisions.Contains("1.93S") && sceneName.Equals("2.-"))
+                    || (gameController.madeDecisions.Contains("3.90S") && sceneName.Equals("4.-"))
+                    || (gameController.madeDecisions.Contains("3.93S") && sceneName.Equals("4.-")))
             {
                 StartCoroutine(Write(aftermath[2], lText));
                 if (!bool.Parse(aftermath[1]))
@@ -221,6 +223,8 @@ public class SceneController : MonoBehaviour
                     try
                     {
                         stat = aftermath[0].Substring(2, 1);
+                        if (currentScene.sceneName.Equals("SC4.0"))
+                            stat = aftermath[0].Substring(3, 1);
                     }
                     catch (Exception)
                     {
@@ -228,6 +232,8 @@ public class SceneController : MonoBehaviour
                     }
                     
                     int diff = int.Parse(aftermath[0].Substring(0, 2));
+                    if (currentScene.sceneName.Equals("SC4.0"))
+                        diff = int.Parse(aftermath[0].Substring(0, 3));
                     switch (stat)
                     {
                         case "S":
@@ -263,7 +269,9 @@ public class SceneController : MonoBehaviour
             else if (gameController.madeDecisions.Contains(sceneName + "1S")
                 || gameController.madeDecisions.Contains(sceneName + "4S")
                 || (gameController.madeDecisions.Contains("1.91S") && sceneName.Equals("2.-"))
-                || (gameController.madeDecisions.Contains("1.94S") && sceneName.Equals("2.-")))
+                || (gameController.madeDecisions.Contains("1.94S") && sceneName.Equals("2.-"))
+                || (gameController.madeDecisions.Contains("3.91S") && sceneName.Equals("4.-"))
+                || (gameController.madeDecisions.Contains("3.94S") && sceneName.Equals("4.-")))
             {
                 StartCoroutine(Write(aftermath[6], lText));
                 if (!bool.Parse(aftermath[5]))
@@ -272,12 +280,16 @@ public class SceneController : MonoBehaviour
                     try
                     {
                         stat = aftermath[4].Substring(2, 1);
+                        if (currentScene.sceneName.Equals("SC4.0"))
+                            stat = aftermath[4].Substring(3, 1);
                     }
                     catch (Exception)
                     {
                         stat = "A";
                     }
                     int diff = int.Parse(aftermath[4].Substring(0, 2));
+                    if (currentScene.sceneName.Equals("SC4.0"))
+                        diff = int.Parse(aftermath[4].Substring(0, 3));
                     switch (stat)
                     {
                         case "S":
@@ -313,7 +325,9 @@ public class SceneController : MonoBehaviour
             else if (gameController.madeDecisions.Contains(sceneName + "2S")
                 || gameController.madeDecisions.Contains(sceneName + "5S")
                 || (gameController.madeDecisions.Contains("1.92S") && sceneName.Equals("2.-"))
-                || (gameController.madeDecisions.Contains("1.95S") && sceneName.Equals("2.-")))
+                || (gameController.madeDecisions.Contains("1.95S") && sceneName.Equals("2.-"))
+                || (gameController.madeDecisions.Contains("3.92S") && sceneName.Equals("4.-"))
+                || (gameController.madeDecisions.Contains("3.95S") && sceneName.Equals("4.-")))
             {
                 StartCoroutine(Write(aftermath[10], lText));
                 if (!bool.Parse(aftermath[9]))
@@ -322,12 +336,16 @@ public class SceneController : MonoBehaviour
                     try
                     {
                         stat = aftermath[8].Substring(2, 1);
+                        if (currentScene.sceneName.Equals("SC4.0"))
+                            stat = aftermath[8].Substring(3, 1);
                     }
                     catch (Exception)
                     {
                         stat = "A";
                     }
                     int diff = int.Parse(aftermath[8].Substring(0, 2));
+                    if (currentScene.sceneName.Equals("SC4.0"))
+                        diff = int.Parse(aftermath[8].Substring(0, 3));
                     switch (stat)
                     {
                         case "S":
@@ -363,7 +381,9 @@ public class SceneController : MonoBehaviour
             else if (gameController.madeDecisions.Contains(sceneName + "0F")
                 || gameController.madeDecisions.Contains(sceneName + "3F")
                 || (gameController.madeDecisions.Contains("1.90F") && sceneName.Equals("2.-"))
-                || (gameController.madeDecisions.Contains("1.93F") && sceneName.Equals("2.-")))
+                || (gameController.madeDecisions.Contains("1.93F") && sceneName.Equals("2.-"))
+                || (gameController.madeDecisions.Contains("3.90F") && sceneName.Equals("4.-"))
+                || (gameController.madeDecisions.Contains("3.93F") && sceneName.Equals("4.-")))
             {
                 StartCoroutine(Write(aftermath[3], lText));
                 if (!bool.Parse(aftermath[1]))
@@ -372,12 +392,16 @@ public class SceneController : MonoBehaviour
                     try
                     {
                         stat = aftermath[0].Substring(6, 1);
+                        if (currentScene.sceneName.Equals("SC4.0"))
+                            stat = aftermath[0].Substring(7, 1);
                     }
                     catch (Exception)
                     {
                         stat = "A";
                     }
                     int diff = int.Parse(aftermath[0].Substring(4, 2));
+                    if (currentScene.sceneName.Equals("SC4.0"))
+                        diff = int.Parse(aftermath[0].Substring(5, 2));
                     switch (stat)
                     {
                         case "S":
@@ -413,7 +437,9 @@ public class SceneController : MonoBehaviour
             else if (gameController.madeDecisions.Contains(sceneName + "1F")
                 || gameController.madeDecisions.Contains(sceneName + "4F")
                 || (gameController.madeDecisions.Contains("1.91F") && sceneName.Equals("2.-"))
-                || (gameController.madeDecisions.Contains("1.94F") && sceneName.Equals("2.-")))
+                || (gameController.madeDecisions.Contains("1.94F") && sceneName.Equals("2.-"))
+                || (gameController.madeDecisions.Contains("3.91F") && sceneName.Equals("4.-"))
+                || (gameController.madeDecisions.Contains("3.94F") && sceneName.Equals("4.-")))
             {
                 StartCoroutine(Write(aftermath[7], lText));
                 if (!bool.Parse(aftermath[5]))
@@ -422,12 +448,16 @@ public class SceneController : MonoBehaviour
                     try
                     {
                         stat = aftermath[4].Substring(6, 1);
+                        if (currentScene.sceneName.Equals("SC4.0"))
+                            stat = aftermath[4].Substring(7, 1);
                     }
                     catch (Exception)
                     {
                         stat = "A";
                     }
                     int diff = int.Parse(aftermath[4].Substring(4, 2));
+                    if (currentScene.sceneName.Equals("SC4.0"))
+                        diff = int.Parse(aftermath[4].Substring(5, 2));
                     switch (stat)
                     {
                         case "S":
@@ -463,7 +493,9 @@ public class SceneController : MonoBehaviour
             else if (gameController.madeDecisions.Contains(sceneName + "2F")
                 || gameController.madeDecisions.Contains(sceneName + "5F")
                 || (gameController.madeDecisions.Contains("1.92F") && sceneName.Equals("2.-"))
-                || (gameController.madeDecisions.Contains("1.95F") && sceneName.Equals("2.-")))
+                || (gameController.madeDecisions.Contains("1.95F") && sceneName.Equals("2.-"))
+                || (gameController.madeDecisions.Contains("3.92F") && sceneName.Equals("4.-"))
+                || (gameController.madeDecisions.Contains("3.95F") && sceneName.Equals("4.-")))
             {
                 StartCoroutine(Write(aftermath[11], lText));
                 if (!bool.Parse(aftermath[9]))
@@ -472,12 +504,16 @@ public class SceneController : MonoBehaviour
                     try
                     {
                         stat = aftermath[8].Substring(6, 1);
+                        if (currentScene.sceneName.Equals("SC4.0"))
+                            stat = aftermath[8].Substring(7, 1);
                     }
                     catch (Exception)
                     {
                         stat = "A";
                     }
                     int diff = int.Parse(aftermath[8].Substring(4, 2));
+                    if (currentScene.sceneName.Equals("SC4.0"))
+                        diff = int.Parse(aftermath[8].Substring(5, 2));
                     switch (stat)
                     {
                         case "S":
@@ -514,8 +550,8 @@ public class SceneController : MonoBehaviour
             rGraphic.sprite = currentScene.sprite;
             StartCoroutine(FadeImage(rGraphic));
         }
-        catch (Exception)
-        {
+        catch (FileNotFoundException)
+        {    
             Environment.CurrentDirectory = currentDirectory;
             if (currentScene.sc.lText && !currentScene.sc.rText)
             {

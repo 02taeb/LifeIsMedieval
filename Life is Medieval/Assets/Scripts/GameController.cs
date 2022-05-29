@@ -119,6 +119,8 @@ public class GameController : MonoBehaviour
             fr.WriteToFile(file, TextAssetToList((TextAsset)Resources.Load("TextsToCreate/" + file)));
             Environment.CurrentDirectory = currentDirectory;
         }
+
+        PlayerPrefs.SetString("FilesMade", "True");
     }
 
     /// <summary>
@@ -180,7 +182,8 @@ public class GameController : MonoBehaviour
         {
             PlayerPrefs.SetString("Dead", "false");
         }
-        CreateFiles();
+        if (!PlayerPrefs.HasKey("FilesMade") || !PlayerPrefs.GetString("FilesMade").Equals("False"))
+            CreateFiles();
         LoadGame();
 
         if (!PlayerPrefs.HasKey("Volume"))
@@ -209,13 +212,14 @@ public class GameController : MonoBehaviour
         currentScene = "SC1.1";
         madeDecisions.Clear();
         SaveGame();
+        PlayerPrefs.SetString("FilesMade", "False");
         SceneManager.LoadScene(0);
     }
 
     private void PlayerDeath()
     {
         deathMessage.SetActive(true);
-
+        PlayerPrefs.SetString("FilesMade", "False");
         StartCoroutine(DestroyMsg());
 
         strength = 0;

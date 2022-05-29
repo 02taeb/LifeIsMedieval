@@ -550,8 +550,8 @@ public class SceneController : MonoBehaviour
             rGraphic.sprite = currentScene.sprite;
             StartCoroutine(FadeImage(rGraphic));
         }
-        catch (Exception)
-        {
+        catch (FileNotFoundException)
+        {    
             Environment.CurrentDirectory = currentDirectory;
             if (currentScene.sc.lText && !currentScene.sc.rText)
             {

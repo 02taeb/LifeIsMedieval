@@ -65,7 +65,7 @@ public class MakeDecision : MonoBehaviour
             switch (choices[buttonIndex].req)
             {
                 case Choice.Req.STRENGTH:
-                    if (Random.Range(gameController.strength * 10, (choices[buttonIndex].reqNum + gameController.strength) * 10 + 1) >= choices[buttonIndex].reqNum * 10 + 1)
+                    if (Random.Range(gameController.strength * 10, (choices[buttonIndex].reqNum + gameController.strength) * 10 + 1) >= choices[buttonIndex].reqNum * 10 + 1 || choices[buttonIndex].reqNum == 0)
                     {
                         SucceedChoice();
                     }
@@ -75,7 +75,7 @@ public class MakeDecision : MonoBehaviour
                     }
                     break;
                 case Choice.Req.INTELLIGENCE:
-                    if (Random.Range(gameController.intelligence * 10, (choices[buttonIndex].reqNum + gameController.intelligence) * 10 + 1) >= choices[buttonIndex].reqNum * 10 + 1)
+                    if (Random.Range(gameController.intelligence * 10, (choices[buttonIndex].reqNum + gameController.intelligence) * 10 + 1) >= choices[buttonIndex].reqNum * 10 + 1 || choices[buttonIndex].reqNum == 0)
                     {
                         SucceedChoice();
                     }
@@ -85,7 +85,7 @@ public class MakeDecision : MonoBehaviour
                     }
                     break;
                 case Choice.Req.TRICKERY:
-                    if (Random.Range(gameController.trickery * 10, (choices[buttonIndex].reqNum + gameController.trickery) * 10 + 1) >= choices[buttonIndex].reqNum * 10 + 1)
+                    if (Random.Range(gameController.trickery * 10, (choices[buttonIndex].reqNum + gameController.trickery) * 10 + 1) >= choices[buttonIndex].reqNum * 10 + 1 || choices[buttonIndex].reqNum == 0)
                     {
                         SucceedChoice();
                     }

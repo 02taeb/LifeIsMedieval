@@ -1,0 +1,12 @@
+Explore the ruins.
+Perhaps there’s something to be learned.
+INTELLIGENCE
+0
+Enter the forest.
+Perhaps I can catch a stag!
+STRENGTH
+6
+Go west.
+Why would I go places he’s already been?
+TRICKERY
+6

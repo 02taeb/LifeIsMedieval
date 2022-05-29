@@ -45,6 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 536e5fd24064ec54a8bc52221601e9f5, type: 3}
   prevScene: {fileID: 7873533839791708879, guid: b7876a7e0c2b4c946bca24ba0e6c5582, type: 3}
-  nextScene: {fileID: 7873533839791708879, guid: 0aa9948579cb71140a7cf42181148bc8, type: 3}
+  nextScene: {fileID: 7873533839791708879, guid: 827c02261fd14ed42aee17d8e134ffcb, type: 3}
   sceneName: SC1.5
-  completed: 0

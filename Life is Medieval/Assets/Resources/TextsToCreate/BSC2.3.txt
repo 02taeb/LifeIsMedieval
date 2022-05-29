@@ -1,0 +1,12 @@
+Strength
+Assure him that he didn’t raise a weakling.
+STRENGTH
+0
+Intelligence
+Quote him a latin proverb. 
+INTELLIGENCE
+0
+Trickery
+With a subtle move, pry the hammer from your father’s belt and ask him where it is.
+TRICKERY
+0

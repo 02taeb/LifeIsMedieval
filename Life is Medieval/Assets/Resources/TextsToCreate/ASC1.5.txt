@@ -1,12 +1,11 @@
-+2S/-1L
++3S/-0L
 false
-You defeated the evil dragon
-You got f*cked by the evil dragon
-+2I/-1S
+Your father is filled with joy as you set your sights on the hammer leaning against the wall. “See! He will be as strong as an ox, Isabel!” Oscar proclaims in excitement. “But hopefully not as dull as one!” Isabel replies. Somehow the sight of the hammer makes you feel powerful.
+NOTXT
++3I/-0L
 false
-You outsmarted the evil dragon
-You tried to outsmart the evil dragon but had to run away like a coward
-+2T/-0
-false
-You sneaked by the dragon and successfully managed to steal one of its eggs, this will surely fetch a nice price.
-You sneaked by the dragon and tried to steal one of its eggs but the dragon woke up and it was all you could do just to get away unharmed.
+Isabel rubs her palms together excitedly as you lift your sights up towards the stars above. “This is a sign, Oscar! God has blessed our son with a mind made for greatness!” She cries out. “What’s a great mind good for if you cannot defend yourself?!” Oscar replies in disappointment. Somehow the sight of the stars makes you feel humbled.
+NOTXT
++3T/-0L
+Your parents turn their heads to the dinner table, and are dumbfounded as they see what your finger is pointing at. “By God! This is no ordinary boy, Isabel!” Your father cries out. “Aye, there is surely more to him than meets the eye.” She replies, somewhat puzzled. Somehow the sight of the rat stealing the food makes you feel inspired.
+NOTXT

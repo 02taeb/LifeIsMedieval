@@ -1,0 +1,12 @@
+Help your father.
+You cannot wait to start hammering!
+STRENGTH
+0
+Help your aunt.
+Learning about medicine is invaluable!
+INTELLIGENCE
+0
+Be a novelty.
+There must be something else you can do to help out!
+TRICKERY
+0

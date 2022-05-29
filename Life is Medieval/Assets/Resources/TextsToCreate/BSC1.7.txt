@@ -1,0 +1,12 @@
+Smack it.
+You grab a sharp pebble lying near you.
+STRENGTH
+0
+Move away.
+It might be dangerous.
+INTELLIGENCE
+0
+Catch it.
+It might come in handy later.
+TRICKERY
+0

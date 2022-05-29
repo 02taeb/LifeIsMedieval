@@ -1,0 +1,12 @@
++3S/-0L
+false
+“Father,” you say, and turn towards him. “You’ve seen me with the other boys my age, as we scuffle and wrestle. You’ve seen me throw them around like they were dolls. I might never learn to read nor write – but through my strength I will make you proud.” You say, and pat him back a little harder than you anticipated. “Hey! Careful with your oldman – you almost had me flying through the window!”
+NOTXT
++3I/-0L
+false
+“Fortis Fortuna Adiuvat,” you say to your father in latin, but you quickly realize he has no idea what you’ve just said. “It means: ‘fortune favors the bold’, father… you needn’t worry too much of what will become of me,” you explain, and show him your book. “Where did you get that?!” Your father burst out, clearly afraid you’ve committed some crime in acquiring it. “I got it by honest means, father. Worry not, just know that when I’m older I will make life better for you and mother.”
+NOTXT
++3T/-0L
+false
+“Father, all my life I’ve seen things differently than most. When others see problems I see opportunities, when they encounter locked doors they turn around – while I go through them with just a slight delay,” you explain. Your father merely rolls his eyes and says, “Verner, my son, spare me your nonsense.” “Nonsense, you say? You always like to say that your hammer never leaves your belt without your consent, well – where is it now?” Your father looks at you incredulously while reaching down at his waist. To his utter surprise it’s not there, but instead offered to him by your hand. “How in God’s name…”
+NOTXT

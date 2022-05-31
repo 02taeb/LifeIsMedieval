@@ -43,6 +43,7 @@ public class FileReader
         }
         finally
         {
+            // Prevents fatal crash. Why didn't I think of this before! *facepalms*
             Environment.CurrentDirectory = CurrentDirectory;
         }
 
